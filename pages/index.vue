@@ -16,6 +16,9 @@ import Navbar from '../layouts/navbar.vue';
 
 useHead({
     title: 'OneLink - home',
+    link: [
+        { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css' }
+    ],
     meta: [
         { name: 'author', content: 'M Radya Iftikhar' },
         { name: 'description', content: 'Put all your links in one link' },
@@ -68,8 +71,8 @@ function getLoad(value) {
     background-color: var(--secondary);
 }
 
-@media only screen and (max-width:700px){
-    .wrapper{
+@media only screen and (max-width:700px) {
+    .wrapper {
         width: 100%;
         height: 100vh;
         border-radius: 0%;

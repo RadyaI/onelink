@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div class="sidebar-open" v-if="state.sidebar"></div>
         <nav>
             <div class="row">
                 <div class="title">
@@ -14,10 +15,29 @@
                         @click="switchOnPage('dashboard')">Dashboard</div>
                 </div>
             </div>
+            <div class="menu-burger">
+                <i class="bi bi-list" @click="state.sidebar = true"></i>
+            </div>
             <div class="login">
                 <button>Login / Daftar</button>
             </div>
         </nav>
+        <div class="sidebar" :class="{ 'hide': state.onHide }" v-if="state.sidebar">
+            <div class="close">
+                <i class="icon bi bi-x-lg" @click="hideSidebar()"></i>
+            </div>
+            <div class="menu">
+                <div class="menu-list" :class="{ 'selected': state.navSelect === 'home' }"
+                    @click="switchOnPage('home')">Home</div>
+                <div class="menu-list" :class="{ 'selected': state.navSelect === 'about' }"
+                    @click="switchOnPage('about')">About</div>
+                <div class="menu-list" :class="{ 'selected': state.navSelect === 'dashboard' }"
+                    @click="switchOnPage('dashboard')">Dashboard</div>
+            </div>
+            <div class="login">
+                <button>Login / Daftar</button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -26,11 +46,21 @@
 const emit = defineEmits()
 const state = reactive({
     navSelect: 'home',
+    sidebar: false,
+    onHide: false,
 })
 
 function switchOnPage(menu) {
     state.navSelect = menu
     emit('loadOnPage', true)
+}
+
+function hideSidebar() {
+    state.onHide = true
+    setTimeout(() => {
+        state.onHide = false
+        state.sidebar = false
+    }, 150);
 }
 
 
@@ -47,7 +77,6 @@ function switchOnPage(menu) {
 }
 
 nav {
-    /* border: 1px solid white; */
     border-radius: 30px 30px 0 0;
     display: flex;
     justify-content: space-between;
@@ -64,9 +93,14 @@ nav {
 
 .selected {
     background-color: #ffd60a;
-    color: #000814;
+    color: var(--optional);
     padding: 5px 10px;
     border-radius: 10px;
+}
+
+.menu-burger,
+.sidebar {
+    display: none;
 }
 
 nav .row .title {
@@ -123,8 +157,117 @@ nav .login button {
     }
 
     nav .login button {
-        padding: 10px 20px;
-        margin-right: 50px;
+        display: none;
     }
+
+    .selected {
+        background-color: var(--primary);
+        color: var(--text-light);
+    }
+
+    .menu-burger {
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 45px;
+        margin-left: 130px;
+    }
+
+    .sidebar-open {
+        position: absolute;
+        background-color: black;
+        opacity: 0.5;
+        width: 100%;
+        height: 100vh;
+    }
+
+    .sidebar {
+        position: absolute;
+        background-color: var(--text-light);
+        color: var(--text-dark);
+        top: 0;
+        left: 0;
+        display: block;
+        width: 80%;
+        height: 100vh;
+        animation: slide 0.2s;
+    }
+
+    .hide {
+        animation: hideSlide 0.2s;
+    }
+
+    @keyframes hideSlide {
+        0% {
+            left: 0;
+        }
+
+        100% {
+            left: -350px;
+        }
+    }
+
+    @keyframes slide {
+        0% {
+            left: -350px;
+        }
+
+        100% {
+            left: 0;
+        }
+    }
+
+    .sidebar .close {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 40px;
+    }
+
+    .sidebar .close .icon {
+        margin-right: 20px;
+    }
+
+    .sidebar .menu {
+        width: 100%;
+        height: 200px;
+        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        color: var(--text-dark);
+    }
+
+    .sidebar .menu .menu-list {
+        width: 80%;
+        height: 45px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+
+    .sidebar .login {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
+    }
+
+    .sidebar .login button {
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        padding: 3px 15px;
+        font-size: 15px;
+        background-color: var(--text-optional);
+        color: var(--primary);
+        font-weight: bold;
+    }
+
 }
 </style>
