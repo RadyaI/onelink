@@ -4,6 +4,7 @@
         <div class="container">
             <div class="wrapper">
                 <Navbar @loadOnPage="getLoad" />
+                <card />
             </div>
         </div>
     </div>
@@ -13,6 +14,7 @@
 import { reactive } from 'vue';
 import loadingOnPage from '../components/loadingOnPage.vue';
 import Navbar from '../layouts/navbar.vue';
+import card from '../layouts/card.vue';
 
 useHead({
     title: 'OneLink - home',
