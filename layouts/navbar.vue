@@ -45,10 +45,14 @@
 
 <script setup>
 import { onMounted } from 'vue';
+import { useNuxtApp } from 'nuxt/app';
+
+import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+
 import swal from 'sweetalert';
-import { googleLogin, userLogout } from '../service/auth';
 
 const emit = defineEmits()
+const { $auth } = useNuxtApp()
 const state = reactive({
     isLoggedIn: false,
     navSelect: 'home',
@@ -73,10 +77,11 @@ function hideSidebar() {
 async function login() {
     try {
         console.log('Login...')
-        const user = await googleLogin()
+        const provider = new GoogleAuthProvider()
+        const user = await signInWithPopup($auth, provider)
         state.isLoggedIn = true
 
-        localStorage.setItem('loginData', JSON.stringify(user))
+        localStorage.setItem('loginData', JSON.stringify(user.user))
         localStorage.setItem('isLoggedIn', true)
 
         console.log(user)
@@ -96,7 +101,7 @@ async function logout() {
 
         if (alert) {
             console.log('logout...')
-            await userLogout()
+            await signOut($auth)
             localStorage.clear()
             location.reload()
         }

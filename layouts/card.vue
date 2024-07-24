@@ -43,9 +43,9 @@ function contentToDisplay(display) {
         state.content.text2 = 'You can also include a profile photo and about yourself'
         state.content.img = aboutImg
     } else if (display === 'dashboard') {
-        state.content.title = 'Welcome to OneLink.'
-        state.content.text = 'Put all the links you have here!'
-        state.content.text2 = 'Get Started'
+        state.content.title = 'Coming Soon'
+        state.content.text = ''
+        state.content.text2 = ''
         state.content.img = homeImg
     }
 }

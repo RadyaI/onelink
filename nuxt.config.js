@@ -15,4 +15,9 @@ export default defineNuxtConfig({
     '/': { prerender: true },
   }, 
   compatibilityDate: '2024-07-22',
+  runtimeConfig: {
+    public: {
+      firebaseKey: process.env.NUXT_FIREBASE_KEY
+    }
+  }
 }); 
