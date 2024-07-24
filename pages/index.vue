@@ -44,10 +44,6 @@ function getDisplay(value) {
     state.display = value
 }
 
-onMounted(() => {
-    console.log(process.env.FIREBASE_KEY)
-})
-
 </script>
 
 <style>

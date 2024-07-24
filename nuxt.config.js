@@ -19,5 +19,8 @@ export default defineNuxtConfig({
     public: {
       firebaseKey: process.env.NUXT_FIREBASE_KEY
     }
-  }
+  },
+  plugins: [
+    '~/plugins/firebase.js'
+  ]
 }); 
