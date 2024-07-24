@@ -4,7 +4,7 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from 'firebase/auth'
 
 const firebaseConfig = {
-    apiKey: process.env.FIREBASE_KEY,
+    apiKey: process.env.NUXT_FIREBASE_KEY,
     authDomain: "onelink-8da0d.firebaseapp.com",
     projectId: "onelink-8da0d",
     storageBucket: "onelink-8da0d.appspot.com",
