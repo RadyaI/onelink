@@ -2,12 +2,12 @@
     <div>
         <div class="card">
             <div class="text">
-                <h2>Welcome to OneLink.</h2>
-                <p>Put all the links you have here!</p>
-                <p>Get Started</p>
+                <h2>{{ state.content.title }}</h2>
+                <p>{{ state.content.text }}</p>
+                <p>{{ state.content.text2 }}</p>
             </div>
             <div class="img">
-                <img :src="state.img.home" alt="home">
+                <img :src="state.content.img" alt="home">
             </div>
         </div>
     </div>
@@ -15,12 +15,43 @@
 
 <script setup>
 import homeImg from '@/public/img/home2.png'
-import { reactive } from 'vue';
+import aboutImg from '@/public/img/about.png'
+import { onUpdated, reactive } from 'vue';
 
+const props = defineProps(['display'])
 const state = reactive({
     img: {
         home: homeImg
+    },
+    content: {
+        title: 'Welcome to OneLink.',
+        text: 'Put all the links you have here!',
+        text2: 'Get Started',
+        img: homeImg
     }
+})
+
+function contentToDisplay(display) {
+    if (display === 'home') {
+        state.content.title = 'Welcome to OneLink.'
+        state.content.text = 'Put all the links you have here!'
+        state.content.text2 = 'Get Started'
+        state.content.img = homeImg
+    } else if (display === 'about') {
+        state.content.title = 'What is OneLink?.'
+        state.content.text = 'OneLink is a platform for creating a link containing your social media links or whatever links'
+        state.content.text2 = 'You can also include a profile photo and about yourself'
+        state.content.img = aboutImg
+    } else if (display === 'dashboard') {
+        state.content.title = 'Welcome to OneLink.'
+        state.content.text = 'Put all the links you have here!'
+        state.content.text2 = 'Get Started'
+        state.content.img = homeImg
+    }
+}
+
+onUpdated(() => {
+    contentToDisplay(props.display)
 })
 
 </script>
@@ -44,8 +75,18 @@ const state = reactive({
 
 .card .text {
     width: 50%;
-    height: 100%;
+    height: 90%;
     color: var(--text-light);
+    overflow-y: auto;
+}
+
+.card .text::-webkit-scrollbar{
+    width: 10px;
+}
+
+.card .text::-webkit-scrollbar-thumb{
+    background-color: var(--text-optional);
+    border-radius: 50px;
 }
 
 .card .text h2 {

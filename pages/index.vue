@@ -3,15 +3,15 @@
         <loadingOnPage v-if="state.pageLoad" />
         <div class="container">
             <div class="wrapper">
-                <Navbar @loadOnPage="getLoad" />
-                <card />
+                <Navbar @loadOnPage="getLoad" @currentDisplay="getDisplay" />
+                <card :display="state.display" />
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive, onMounted } from 'vue';
 import loadingOnPage from '../components/loadingOnPage.vue';
 import Navbar from '../layouts/navbar.vue';
 import card from '../layouts/card.vue';
@@ -30,6 +30,7 @@ useHead({
 
 const state = reactive({
     pageLoad: false,
+    display: 'home'
 })
 
 function getLoad(value) {
@@ -38,6 +39,14 @@ function getLoad(value) {
         state.pageLoad = false
     }, 600);
 }
+
+function getDisplay(value) {
+    state.display = value
+}
+
+onMounted(() => {
+    console.log(process.env.FIREBASE_KEY)
+})
 
 </script>
 

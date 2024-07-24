@@ -13,7 +13,6 @@ export default defineNuxtConfig({
   routeRules: {
     // prerender index route by default
     '/': { prerender: true },
-  },
-
+  }, 
   compatibilityDate: '2024-07-22',
 }); 

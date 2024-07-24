@@ -19,7 +19,8 @@
                 <i class="bi bi-list" @click="state.sidebar = true"></i>
             </div>
             <div class="login">
-                <button>Login / Daftar</button>
+                <button @click="logout" v-if="state.isLoggedIn">LogOut</button>
+                <button @click="login" v-else>Login / Daftar</button>
             </div>
         </nav>
         <div class="sidebar" :class="{ 'hide': state.onHide }" v-if="state.sidebar">
@@ -28,23 +29,28 @@
             </div>
             <div class="menu">
                 <div class="menu-list" :class="{ 'selected': state.navSelect === 'home' }"
-                    @click="switchOnPage('home')">Home</div>
+                    @click="switchOnPage('home')">Home </div>
                 <div class="menu-list" :class="{ 'selected': state.navSelect === 'about' }"
                     @click="switchOnPage('about')">About</div>
                 <div class="menu-list" :class="{ 'selected': state.navSelect === 'dashboard' }"
                     @click="switchOnPage('dashboard')">Dashboard</div>
             </div>
             <div class="login">
-                <button>Login / Daftar</button>
+                <button @click="logout" v-if="state.isLoggedIn">LogOut</button>
+                <button @click="login" v-else>Login / Daftar</button>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
+import swal from 'sweetalert';
+import { googleLogin, userLogout } from '../service/auth';
 
 const emit = defineEmits()
 const state = reactive({
+    isLoggedIn: false,
     navSelect: 'home',
     sidebar: false,
     onHide: false,
@@ -53,6 +59,7 @@ const state = reactive({
 function switchOnPage(menu) {
     state.navSelect = menu
     emit('loadOnPage', true)
+    emit('currentDisplay', state.navSelect)
 }
 
 function hideSidebar() {
@@ -63,6 +70,44 @@ function hideSidebar() {
     }, 150);
 }
 
+async function login() {
+    try {
+        console.log('Login...')
+        const user = await googleLogin()
+        state.isLoggedIn = true
+
+        localStorage.setItem('loginData', JSON.stringify(user))
+        localStorage.setItem('isLoggedIn', true)
+
+        console.log(user)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+async function logout() {
+    try {
+        const alert = await swal({
+            icon: 'warning',
+            title: 'Ingin LogOut?',
+            buttons: ['Tidak', 'Iya'],
+            dangerMode: true
+        })
+
+        if (alert) {
+            console.log('logout...')
+            await userLogout()
+            localStorage.clear()
+            location.reload()
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+onMounted(() => {
+    state.isLoggedIn = localStorage.getItem('isLoggedIn')
+})
 
 </script>
 
