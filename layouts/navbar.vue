@@ -76,8 +76,8 @@ function hideSidebar() {
 async function login() {
     try {
         console.log('Login...')
-        state.isLoggedIn = true
         const user = await loginUser()
+        state.isLoggedIn = true
         localStorage.setItem('loginData', JSON.stringify(user))
         localStorage.setItem('isLoggedIn', true)
     } catch (error) {
