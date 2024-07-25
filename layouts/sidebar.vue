@@ -57,7 +57,7 @@ async function logout() {
             await logoutUser()
             localStorage.clear()
             Cookies.remove('isLoggedIn')
-            location.href('/')
+            location.href = '/'
         }
     } catch (error) {
         console.log(error.message)

@@ -36,7 +36,7 @@ onMounted(() => {
     // const auth = Cookies.get('isLoggedIn')
     const auth = true
     if(!auth){
-        location.href = '/'
+        location.href = '/' 
     }
 })
 
