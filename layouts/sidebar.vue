@@ -71,7 +71,7 @@ function display(value) {
     setTimeout(() => {
         loading.value = false
         router.push(value)
-    }, 1200);
+    }, 1100);
 }
 
 onMounted(() => {
@@ -98,6 +98,7 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
