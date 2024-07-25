@@ -45,11 +45,11 @@
 
 <script setup>
 import { onMounted } from 'vue';
-import { useNuxtApp } from 'nuxt/app';
 
 import { loginUser, logoutUser } from '../service/auth'
 
 import swal from 'sweetalert';
+import Cookies from 'js-cookie';
 
 const emit = defineEmits()
 const state = reactive({
@@ -79,7 +79,8 @@ async function login() {
         const user = await loginUser()
         state.isLoggedIn = true
         localStorage.setItem('loginData', JSON.stringify(user))
-        localStorage.setItem('isLoggedIn', true)
+        Cookies.set('isLoggedIn', true)
+        location.href = 'dashboard'
     } catch (error) {
         console.log(error)
     }
@@ -106,12 +107,17 @@ async function logout() {
 }
 
 onMounted(() => {
-    state.isLoggedIn = localStorage.getItem('isLoggedIn')
+    state.isLoggedIn = Cookies.get('isLoggedIn')
 })
 
 </script>
 
 <style scoped>
+.bg {
+    background-color: red;
+}
+
+
 :root {
     --primary: #000814;
     --secondary: #001d3d;

@@ -23,7 +23,7 @@ useHead({
     ],
     meta: [
         { name: 'author', content: 'M Radya Iftikhar' },
-        { name: 'description', content: 'Put all your links in one link' },
+        { name: 'description', content: 'Discover the ease of sharing with one simple link. Combine all your important links into a single, easily accessible link. Perfect for social media, portfolios, and more.' },
         { name: 'seo', content: 'onelink, link, bio' },
     ]
 })
@@ -71,7 +71,7 @@ function getDisplay(value) {
     align-items: center;
 }
 
-.wrapper {
+.container .wrapper {
     width: 90%;
     height: 85vh;
     border-radius: 30px;
@@ -79,7 +79,7 @@ function getDisplay(value) {
 }
 
 @media only screen and (max-width:700px) {
-    .wrapper {
+    .container .wrapper {
         width: 100%;
         height: 100vh;
         border-radius: 0%;

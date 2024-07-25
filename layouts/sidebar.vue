@@ -1,29 +1,30 @@
 <template>
     <div>
+        <loadingToPage v-if="loading" />
         <div class="sidebar">
             <div class="menu">
                 <div class="title"> <span style="color: var(--text-optional);">One</span>Link</div>
                 <div class="menu-list">
                     <div class="list" style="margin-left: 25px; font-weight: bold;">MENU</div>
-                    <div class="list" @click="currectDisplay = 'dashboard'"
-                        :class="{ 'selected': currectDisplay === 'dashboard' }"><i class="bi bi-app"></i>
+                    <div class="list" @click="display('dashboard')"
+                        :class="{ 'selected': currectDisplay === 'dashboard' }"><i class="bi bi-grid"></i>
                         <p>Dashboard</p>
                     </div>
-                    <div class="list" @click="currectDisplay = 'page'"
-                        :class="{ 'selected': currectDisplay === 'page' }"><i class="bi bi-boxes"></i>
+                    <div class="list" @click="display('page')" :class="{ 'selected': currectDisplay === 'page' }"><i
+                            class="bi bi-boxes"></i>
                         <p>Page</p>
                     </div>
-                    <div class="list" @click="currectDisplay = 'link'"
-                        :class="{ 'selected': currectDisplay === 'link' }"><i class="bi bi-link-45deg"></i>
+                    <div class="list" @click="display('link')" :class="{ 'selected': currectDisplay === 'link' }"><i
+                            class="bi bi-link-45deg"></i>
                         <p>Link</p>
                     </div>
-                    <div class="list" @click="currectDisplay = 'setting'"
-                        :class="{ 'selected': currectDisplay === 'setting' }"><i class="bi bi-gear"></i>
+                    <div class="list" @click="display('setting')" :class="{ 'selected': currectDisplay === 'setting' }">
+                        <i class="bi bi-gear"></i>
                         <p>Setting</p>
                     </div>
                 </div>
             </div>
-            <div class="logout"><i class="bi bi-arrow-right-square"></i>
+            <div class="logout" @click="logout()"><i class="bi bi-arrow-right-square"></i>
                 <p>Logout</p>
             </div>
         </div>
@@ -31,7 +32,53 @@
 </template>
 
 <script setup>
+import Cookies from 'js-cookie';
+import swal from 'sweetalert';
+
+import { useRouter } from 'vue-router';
+
+import { logoutUser } from '../service/auth';
+import loadingToPage from '../components/loadingToPage.vue'
+import { onMounted, onUpdated } from 'vue';
+
+const router = useRouter()
 const currectDisplay = ref('dashboard')
+const loading = ref(false)
+
+async function logout() {
+    try {
+        const alert = await swal({
+            icon: 'warning',
+            title: 'Ingin logout?',
+            buttons: ['Tidak', 'Iya']
+        })
+
+        if (alert) {
+            await logoutUser()
+            localStorage.clear()
+            Cookies.remove('isLoggedIn')
+            location.reload()
+        }
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+function display(value) {
+    currectDisplay.value = value
+    localStorage.setItem('display', value)
+    loading.value = true
+    setTimeout(() => {
+        loading.value = false
+        router.push(value)
+    }, 1200);
+}
+
+onMounted(() => {
+    currectDisplay.value = localStorage.getItem('display') ? localStorage.getItem('display') : 'dashboard'
+})
+
+
 </script>
 
 <style scoped>
