@@ -65,7 +65,8 @@ onMounted(() => {
     width: 79%;
     height: 100vh;
     overflow-y: scroll;
-    background-color: #efefef;
+    border-left: 1px solid #efefef;
+    background-color: #f9fafc;
 }
 
 .Setting::-webkit-scrollbar {

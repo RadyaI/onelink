@@ -105,7 +105,7 @@ onMounted(() => {
     width: 79%;
     height: 100vh;
     overflow-y: scroll;
-    border-left: 1px solid grey;
+    border-left: 1px solid #efefef;
     background-color: #f9fafc;
 }
 
