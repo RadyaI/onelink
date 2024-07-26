@@ -19,7 +19,7 @@
                 <i class="bi bi-list" @click="state.sidebar = true"></i>
             </div>
             <div class="login">
-                <button v-if="state.isLoggedIn"><nuxt-link to="/dashboard">Dashboard</nuxt-link></button>
+                <button v-if="state.isLoggedIn" @click="toDashboard()">Dashboard</button>
                 <button @click="login" v-else>Login / Daftar</button>
             </div>
         </nav>
@@ -36,7 +36,7 @@
                     @click="switchOnPage('dashboard')">Dashboard</div>
             </div>
             <div class="login">
-                <button v-if="state.isLoggedIn"><nuxt-link to="/dashboard">Dashboard</nuxt-link></button>
+                <button v-if="state.isLoggedIn" @click="toDashboard()">Dashboard</button>
                 <button @click="login" v-else>Login / Daftar</button>
             </div>
         </div>
@@ -45,12 +45,13 @@
 
 <script setup>
 import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 
-import { loginUser, logoutUser } from '../service/auth'
+import { loginUser } from '../service/auth'
 
-import swal from 'sweetalert';
 import Cookies from 'js-cookie';
 
+const router = useRouter()
 const emit = defineEmits()
 const state = reactive({
     isLoggedIn: false,
@@ -81,10 +82,15 @@ async function login() {
         localStorage.setItem('loginData', JSON.stringify(user))
         Cookies.set('isLoggedIn', true)
         location.href = 'dashboard'
+
     } catch (error) {
         console.log(error)
     }
-}w
+}
+
+function toDashboard() {
+    router.push('/dashboard')
+}
 
 onMounted(() => {
     state.isLoggedIn = Cookies.get('isLoggedIn')
