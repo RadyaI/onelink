@@ -8,7 +8,7 @@
                 </div>
                 <div class="access">
                     <div class="title">
-                        Quick Access
+                        QUICK ACCESS
                     </div>
                     <div class="card">
                         <div class="make-page">
@@ -20,6 +20,29 @@
                             <i class="bi bi-link-45deg"></i>
                             New Link
                             <i class="bi bi-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="analytic">
+                    <div class="title">
+                        ANALYTIC
+                    </div>
+                    <div class="card">
+                        <div class="all-page-visit">
+                            <div class="value">0</div>
+                            <div class="name"><i class="bi bi-record-fill"></i> Total Page Visitor</div>
+                        </div>
+                        <div class="all-link-visit">
+                            <div class="value">0</div>
+                            <div class="name"><i class="bi bi-record-fill"></i> Total Link Visitor</div>
+                        </div>
+                        <div class="popular-page-visit">
+                            <div class="value">instagram-page</div>
+                            <div class="name"><i class="bi bi-record-fill"></i> Popular Page</div>
+                        </div>
+                        <div class="popular-link-visit">
+                            <div class="value">youtube-link</div>
+                            <div class="name"><i class="bi bi-record-fill"></i> Popular Link</div>
                         </div>
                     </div>
                 </div>
@@ -82,7 +105,8 @@ onMounted(() => {
     width: 79%;
     height: 100vh;
     overflow-y: scroll;
-    border-left: 1px solid var(--text-dark);
+    border-left: 1px solid grey;
+    background-color: #f9fafc;
 }
 
 .dashboard::-webkit-scrollbar {
@@ -142,11 +166,11 @@ onMounted(() => {
     color: #cd3136;
 }
 
-.dashboard .access .card .make-page:hover{
+.dashboard .access .card .make-page:hover {
     background-color: #c03f3f2a;
 }
 
-.dashboard .access .card .make-page i{
+.dashboard .access .card .make-page i {
     font-size: 20px;
 }
 
@@ -165,12 +189,140 @@ onMounted(() => {
     color: #d2763a;
 }
 
-.dashboard .access .card .make-link:hover{
+.dashboard .access .card .make-link:hover {
     background-color: #b5a65239;
 }
 
-.dashboard .access .card .make-link i{
+.dashboard .access .card .make-link i {
     font-size: 20px;
 }
 
+.dashboard .analytic {
+    width: 100%;
+    height: 300px;
+    margin-top: 25px;
+}
+
+.dashboard .analytic .title {
+    width: 95%;
+    margin: 0 auto;
+    font-weight: bold;
+    color: #495666;
+}
+
+.dashboard .analytic .card {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 15px;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard .analytic .card .all-page-visit {
+    width: 220px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+    border: 1px solid #ecedef;
+    background-color: #ffffff;
+}
+
+.dashboard .analytic .card .all-page-visit .value {
+    font-size: 35px;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.dashboard .analytic .card .all-page-visit .name {
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+
+.dashboard .analytic .card .all-page-visit .name i {
+    color: red;
+}
+
+.dashboard .analytic .card .all-link-visit {
+    width: 220px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+    border: 1px solid #ecedef;
+    background-color: #ffffff;
+    margin-left: 20px;
+}
+
+.dashboard .analytic .card .all-link-visit .value{
+    font-size: 35px;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+.dashboard .analytic .card .all-link-visit .name{
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+.dashboard .analytic .card .all-link-visit .name i{
+    color: purple;
+}
+
+.dashboard .analytic .card .popular-page-visit {
+    width: 220px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+    border: 1px solid #ecedef;
+    background-color: #ffffff;
+    margin-left: 20px;
+}
+
+.dashboard .analytic .card .popular-page-visit .value{
+    font-size: 18px;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+.dashboard .analytic .card .popular-page-visit .name{
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+.dashboard .analytic .card .popular-page-visit .name i{
+    color: red;
+}
+
+.dashboard .analytic .card .popular-link-visit {
+    width: 220px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+    border: 1px solid #ecedef;
+    background-color: #ffffff;
+    margin-left: 20px;
+}
+
+.dashboard .analytic .card .popular-link-visit .value{
+    font-size: 18px;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+.dashboard .analytic .card .popular-link-visit .name{
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+.dashboard .analytic .card .popular-link-visit .name i{
+    color: purple;
+}
 </style>
