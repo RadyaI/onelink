@@ -33,9 +33,8 @@ useHead({
 })
 
 onMounted(() => {
-    // const auth = Cookies.get('isLoggedIn')
-    const auth = true
-    if(!auth){
+    const auth = Cookies.get('isLoggedIn')
+    if (!auth) {
         location.href = '/'
     }
 })
