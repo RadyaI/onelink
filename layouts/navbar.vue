@@ -19,7 +19,7 @@
                 <i class="bi bi-list" @click="state.sidebar = true"></i>
             </div>
             <div class="login">
-                <button @click="logout" v-if="state.isLoggedIn">LogOut</button>
+                <button v-if="state.isLoggedIn"><nuxt-link to="/dashboard">Dashboard</nuxt-link></button>
                 <button @click="login" v-else>Login / Daftar</button>
             </div>
         </nav>
@@ -36,7 +36,7 @@
                     @click="switchOnPage('dashboard')">Dashboard</div>
             </div>
             <div class="login">
-                <button @click="logout" v-if="state.isLoggedIn">LogOut</button>
+                <button v-if="state.isLoggedIn"><nuxt-link to="/dashboard">Dashboard</nuxt-link></button>
                 <button @click="login" v-else>Login / Daftar</button>
             </div>
         </div>
@@ -84,27 +84,7 @@ async function login() {
     } catch (error) {
         console.log(error)
     }
-}
-
-async function logout() {
-    try {
-        const alert = await swal({
-            icon: 'warning',
-            title: 'Ingin LogOut?',
-            buttons: ['Tidak', 'Iya'],
-            dangerMode: true
-        })
-
-        if (alert) {
-            console.log('logout...')
-            await logoutUser()
-            localStorage.clear()
-            location.reload()
-        }
-    } catch (error) {
-        console.log(error)
-    }
-}
+}w
 
 onMounted(() => {
     state.isLoggedIn = Cookies.get('isLoggedIn')
