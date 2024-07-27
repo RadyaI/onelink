@@ -3,7 +3,7 @@
         <div class="row">
             <Sidebar/>
             <div class="page">
-                <div class="profil">
+                <div class="header">
                     <h2>Page</h2>
                 </div>
 
@@ -77,8 +77,17 @@ onMounted(() => {
     background-color: var(--optional);
 }
 
-.page .profil {
+.page .header {
     width: 100%;
-    height: 100px;
+    height: 80px;
+    display: flex;
+    align-items: center;
 }
+
+.page .header h2 {
+    width: 95%;
+    margin: 0 auto;
+    font-size: 30px;
+}
+
 </style>
