@@ -4,7 +4,7 @@
             <div class="text">
                 <h2>{{ state.content.title }}</h2>
                 <p>{{ state.content.text }}</p>
-                <p>{{ state.content.text2 }}</p>
+                <p @click="getStarted()">{{ state.content.text2 }}</p>
             </div>
             <div class="img">
                 <img :src="state.content.img" alt="home">
@@ -14,11 +14,18 @@
 </template>
 
 <script setup>
+import { onUpdated, reactive } from 'vue';
+import { useRouter } from 'vue-router';
+
+import Cookies from 'js-cookie';
+
 import homeImg from '@/public/img/home2.png'
 import aboutImg from '@/public/img/about.png'
-import { onUpdated, reactive } from 'vue';
+import { loginUser } from '../service/auth';
+
 
 const props = defineProps(['display'])
+const router = useRouter()
 const state = reactive({
     img: {
         home: homeImg
@@ -47,6 +54,17 @@ function contentToDisplay(display) {
         state.content.text = ''
         state.content.text2 = ''
         state.content.img = homeImg
+    }
+}
+
+async function getStarted() {
+    if (state.content.text2 === 'Get Started' && Cookies.get('isLoggedIn')) {
+        router.push('/dashboard')
+    } else {
+        const user = await loginUser()
+        localStorage.setItem('loginData', JSON.stringify(user))
+        Cookies.set('isLoggedIn', true)
+        router.push('/dashboard')
     }
 }
 
@@ -80,11 +98,11 @@ onUpdated(() => {
     overflow-y: auto;
 }
 
-.card .text::-webkit-scrollbar{
+.card .text::-webkit-scrollbar {
     width: 10px;
 }
 
-.card .text::-webkit-scrollbar-thumb{
+.card .text::-webkit-scrollbar-thumb {
     background-color: var(--text-optional);
     border-radius: 50px;
 }
