@@ -36,7 +36,118 @@
                             <p>Popular</p>
                         </div>
                     </div>
-                    <div class="tabel"></div>
+                    <div class="tabel">
+                        <!-- Card start -->
+                        <div class="card">
+                            <div class="card-head">
+                                <div class="thumbnail">R</div>
+                                <div class="title">
+                                    <div class="name">Radya</div>
+                                    <div class="link"><a href="https://onelink.radya.fun/radya"
+                                            target="_blank"><small>onelink.radya.fun/radya</small></a></div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <div class="menu">
+                                    <div class="view"><i class="bi bi-eye"></i> 99 Views</div>
+                                    <div class="edit"><i class="bi bi-pencil-square"></i> Edit</div>
+                                    <div class="share"><i class="bi bi-share-fill"></i></div>
+                                </div>
+                                <div class="created"><small><i class="bi bi-clock"></i> 28/07/2024</small></div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-head">
+                                <div class="thumbnail">R</div>
+                                <div class="title">
+                                    <div class="name">Radya</div>
+                                    <div class="link"><a href="https://onelink.radya.fun/radya"
+                                            target="_blank"><small>onelink.radya.fun/radya</small></a></div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <div class="menu">
+                                    <div class="view"><i class="bi bi-eye"></i> 99 Views</div>
+                                    <div class="edit"><i class="bi bi-pencil-square"></i> Edit</div>
+                                    <div class="share"><i class="bi bi-share-fill"></i></div>
+                                </div>
+                                <div class="created"><small><i class="bi bi-clock"></i> 28/07/2024</small></div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-head">
+                                <div class="thumbnail">R</div>
+                                <div class="title">
+                                    <div class="name">Radya</div>
+                                    <div class="link"><a href="https://onelink.radya.fun/radya"
+                                            target="_blank"><small>onelink.radya.fun/radya</small></a></div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <div class="menu">
+                                    <div class="view"><i class="bi bi-eye"></i> 99 Views</div>
+                                    <div class="edit"><i class="bi bi-pencil-square"></i> Edit</div>
+                                    <div class="share"><i class="bi bi-share-fill"></i></div>
+                                </div>
+                                <div class="created"><small><i class="bi bi-clock"></i> 28/07/2024</small></div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-head">
+                                <div class="thumbnail">R</div>
+                                <div class="title">
+                                    <div class="name">Radya</div>
+                                    <div class="link"><a href="https://onelink.radya.fun/radya"
+                                            target="_blank"><small>onelink.radya.fun/radya</small></a></div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <div class="menu">
+                                    <div class="view"><i class="bi bi-eye"></i> 99 Views</div>
+                                    <div class="edit"><i class="bi bi-pencil-square"></i> Edit</div>
+                                    <div class="share"><i class="bi bi-share-fill"></i></div>
+                                </div>
+                                <div class="created"><small><i class="bi bi-clock"></i> 28/07/2024</small></div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-head">
+                                <div class="thumbnail">R</div>
+                                <div class="title">
+                                    <div class="name">Radya</div>
+                                    <div class="link"><a href="https://onelink.radya.fun/radya"
+                                            target="_blank"><small>onelink.radya.fun/radya</small></a></div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <div class="menu">
+                                    <div class="view"><i class="bi bi-eye"></i> 99 Views</div>
+                                    <div class="edit"><i class="bi bi-pencil-square"></i> Edit</div>
+                                    <div class="share"><i class="bi bi-share-fill"></i></div>
+                                </div>
+                                <div class="created"><small><i class="bi bi-clock"></i> 28/07/2024</small></div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-head">
+                                <div class="thumbnail">R</div>
+                                <div class="title">
+                                    <div class="name">Radya</div>
+                                    <div class="link"><a href="https://onelink.radya.fun/radya"
+                                            target="_blank"><small>onelink.radya.fun/radya</small></a></div>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <div class="menu">
+                                    <div class="view"><i class="bi bi-eye"></i> 99 Views</div>
+                                    <div class="edit"><i class="bi bi-pencil-square"></i> Edit</div>
+                                    <div class="share"><i class="bi bi-share-fill"></i></div>
+                                </div>
+                                <div class="created"><small><i class="bi bi-clock"></i> 28/07/2024</small></div>
+                            </div>
+                        </div>
+                        <!-- Card end -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,6 +195,11 @@ onMounted(() => {
     padding: 0;
     margin: 0;
     overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: grey;
 }
 
 .row {
@@ -149,17 +265,18 @@ onMounted(() => {
 .page .tabel-container {
     /* border: 1px solid black; */
     width: 95%;
-    height: 400px;
+    height: 430px;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .page .tabel-container .filter {
     /* border: 1px solid red; */
     width: 100%;
-    height: 80px;
+    height: auto;
     display: flex;
     align-items: center;
+    margin-top: 15px;
 }
 
 .page .tabel-container .filter .search input {
@@ -235,11 +352,112 @@ onMounted(() => {
     height: 17px;
     margin-right: 10px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .page .tabel-container .tabel {
-    border: 1px solid black;
     width: 95%;
-    height: 310px;
+    height: 360px;
+    margin-top: 10px;
+}
+
+.page .tabel-container .tabel::-webkit-scrollbar{
+    width: 10px;
+}
+
+.page .tabel-container .tabel::-webkit-scrollbar-thumb{
+    background-color: var(--text-optional);
+    border-radius: 50px;
+}
+
+.page .tabel-container .tabel .card {
+    border: 1.5px solid #efefef;
+    border-radius: 5px;
+    background-color: white;
+    width: 80%;
+    height: 80px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.page .tabel-container .tabel .card .card-head {
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.page .tabel-container .tabel .card .card-head .thumbnail {
+    border-radius: 10px;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: var(--text-light);
+}
+
+.page .tabel-container .tabel .card .card-head .title {
+    margin-left: 10px;
+}
+
+.page .tabel-container .tabel .card .card-head .title .name {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.page .tabel-container .tabel .card .card-head .title .link {
+    color: grey;
+    cursor: pointer;
+}
+
+.page .tabel-container .tabel .card .card-head .title .link:hover {
+    text-decoration: underline;
+}
+
+.page .tabel-container .tabel .card .card-info {
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: end;
+}
+
+.page .tabel-container .tabel .card .card-info .menu {
+    display: flex;
+}
+
+.page .tabel-container .tabel .card .card-info .menu .view {
+    padding: 5px 7px;
+    margin-right: 15px;
+    background-color: #efefef;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.page .tabel-container .tabel .card .card-info .menu .edit {
+    padding: 5px 7px;
+    margin-right: 15px;
+    background-color: #efefef;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.page .tabel-container .tabel .card .card-info .menu .share {
+    padding: 5px 7px;
+    margin-right: 15px;
+    background-color: #efefef;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.page .tabel-container .tabel .card .card-info .created {
+    margin-right: 20px;
 }
 </style>
