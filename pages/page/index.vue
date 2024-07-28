@@ -195,7 +195,9 @@ onMounted(() => {
     padding: 0;
     margin: 0;
     overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
 
 a {
     text-decoration: none;
