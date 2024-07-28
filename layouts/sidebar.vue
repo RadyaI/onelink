@@ -13,11 +13,7 @@
                     <div class="list" @click="display('page')" :class="{ 'selected': currectDisplay === 'page' }"><i
                             class="bi bi-boxes"></i>
                         <p>Page</p>
-                    </div>
-                    <div class="list" @click="display('link')" :class="{ 'selected': currectDisplay === 'link' }"><i
-                            class="bi bi-link-45deg"></i>
-                        <p>Link</p>
-                    </div>
+                    </div>  
                     <div class="list" @click="display('setting')" :class="{ 'selected': currectDisplay === 'setting' }">
                         <i class="bi bi-gear"></i>
                         <p>Setting</p>
