@@ -85,6 +85,7 @@ useHead({
 
 const state = reactive({
     profil: '',
+    uid: '',
     theme: '',
     pageName: '',
     linkName: ''
@@ -93,6 +94,7 @@ const state = reactive({
 
 onMounted(() => {
     state.profil = JSON.parse(localStorage.getItem('loginData')).photoURL
+    state.uid = JSON.parse(localStorage.getItem('loginData')).uid
     const auth = Cookies.get('isLoggedIn')
     if (!auth) {
         location.href = '/'
@@ -229,6 +231,10 @@ onMounted(() => {
     border: 1px solid grey;
     width: 50%;
     height: 80%;
+}
+
+.wrapper .preview .display::-webkit-scrollbar{
+    width: 0;
 }
 
 .wrapper .preview .display .head {

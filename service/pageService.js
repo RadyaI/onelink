@@ -2,16 +2,16 @@ import { addDoc, collection, getDocs, query, Timestamp, where } from "firebase/f
 import { useNuxtApp } from "nuxt/app"
 
 
-export async function newPage(name, linkName, theme) {
+export async function newPage(name, uid, photo, linkName, theme) {
     try {
         const { $db } = useNuxtApp()
         const dateObj = new Date()
 
         const newData = {
-            uid: JSON.parse(localStorage.getItem('loginData')).uid,
+            uid: uid,
             pageName: name,
             linkName: linkName,
-            profil: JSON.parse(localStorage.getItem('loginData')).photoURL,
+            profil: photo,
             name: 'Your Name',
             bio: 'Streaming Gaming Content',
             theme: theme,
