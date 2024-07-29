@@ -2,15 +2,17 @@ import { addDoc, collection, getDocs, query, Timestamp, where } from "firebase/f
 import { useNuxtApp } from "nuxt/app"
 
 
-export async function newPage(name, theme) {
+export async function newPage(name, linkName, theme) {
     try {
         const { $db } = useNuxtApp()
         const dateObj = new Date()
 
         const newData = {
             uid: JSON.parse(localStorage.getItem('loginData')).uid,
+            pageName: name,
+            linkName: linkName,
             profil: JSON.parse(localStorage.getItem('loginData')).photoURL,
-            name: name,
+            name: 'Your Name',
             bio: 'Streaming Gaming Content',
             theme: theme,
             medsosLink: {
@@ -31,7 +33,7 @@ export async function newPage(name, theme) {
             views: 0,
             created_at: `${dateObj.getUTCDate(), dateObj.getMonth() + 1, dateObj.getFullYear()}`,
             time: Timestamp.now().toMillis,
-        }   
+        }
 
         const check = await getDocs(query(collection($db, 'pages'), where('name', '==', name)))
         if (check.empty) {
