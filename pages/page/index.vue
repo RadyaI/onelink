@@ -39,22 +39,23 @@
                     </div>
                     <div class="tabel">
                         <!-- Card start -->
-                        <div class="card">
+                        <div class="card" v-for="(i, no) in pageData.data" :key="no">
                             <div class="card-head">
-                                <div class="thumbnail">R</div>
+                                <div class="thumbnail">{{ i.thumbnail }}</div>
                                 <div class="title">
-                                    <div class="name">Radya</div>
-                                    <div class="link"><a href="https://onelink.radya.fun/radya"
-                                            target="_blank"><small>onelink.radya.fun/radya</small></a></div>
+                                    <div class="name">{{ i.pageName }}</div>
+                                    <div class="link"><a :href="'https://onelink.radya.fun/' + i.linkName"
+                                            target="_blank"><small>onelink.radya.fun/{{ i.linkName }}</small></a></div>
                                 </div>
                             </div>
                             <div class="card-info">
                                 <div class="menu">
-                                    <div class="view"><i class="bi bi-eye"></i> 99 Views</div>
-                                    <div class="edit"><i class="bi bi-pencil-square"></i> Edit</div>
+                                    <div class="view"><i class="bi bi-eye"></i> {{ i.views }} Views</div>
+                                    <div class="edit" @click="editPage(i.id)"><i class="bi bi-pencil-square"></i> Edit
+                                    </div>
                                     <div class="share"><i class="bi bi-share-fill"></i></div>
                                 </div>
-                                <div class="created"><small><i class="bi bi-clock"></i> 28/07/2024</small></div>
+                                <div class="created"><small><i class="bi bi-clock"></i> {{ i.created_at }}</small></div>
                             </div>
                         </div>
                         <!-- Card end -->
@@ -73,6 +74,8 @@ import Cookies from 'js-cookie';
 
 import loadingToPage from '@/components/loadingToPage.vue'
 import Sidebar from '../layouts/sidebar.vue';
+import { useNuxtApp } from 'nuxt/app';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 const route = useRouter()
 useHead({
@@ -95,6 +98,9 @@ const filter = reactive({
 })
 
 const state = reactive({})
+const pageData = reactive({
+    data: []
+})
 
 function createNewPage() {
     state.loading = true
@@ -103,7 +109,29 @@ function createNewPage() {
     }, 1100);
 }
 
+async function page() {
+    try {
+        const { $db } = useNuxtApp()
+        const uid = JSON.parse(localStorage.getItem('loginData')).uid
+        const get = await getDocs(query(collection($db, 'pages'), where('uid', '==', uid)))
+        get.forEach((data) => {
+            const page = data.data()
+            pageData.data.push({ ...page, id: data.id })
+        })
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
+function editPage(id) {
+    state.loading = true
+    setTimeout(() => {
+        route.push(`/page/create/${id}`)
+    }, 1100);
+}
+
 onMounted(() => {
+    page()
     const auth = Cookies.get('isLoggedIn')
     if (!auth) {
         location.href = '/'
@@ -321,7 +349,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
     background-color: var(--text-light);
 }
@@ -384,5 +412,7 @@ a {
 
 .page .tabel-container .tabel .card .card-info .created {
     margin-right: 20px;
+    /* border: 1px solid black; */
+    padding: 0 5px;
 }
 </style>

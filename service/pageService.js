@@ -9,6 +9,7 @@ export async function newPage(name, uid, photo, linkName, theme) {
 
         const newData = {
             uid: uid,
+            thumbnail: name[0],
             pageName: name,
             linkName: linkName,
             profil: photo,
@@ -31,7 +32,7 @@ export async function newPage(name, uid, photo, linkName, theme) {
                 card5: 'Last Link',
             },
             views: 0,
-            created_at: `${dateObj.getUTCDate(), dateObj.getMonth() + 1, dateObj.getFullYear()}`,
+            created_at: `${dateObj.getUTCDate()}/${dateObj.getMonth() + 1}/${dateObj.getFullYear()}`,
             time: Timestamp.now().toMillis(),
         }
 
