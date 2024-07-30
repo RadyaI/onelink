@@ -1,5 +1,6 @@
 <template>
     <div>
+        <loadingToPage v-if="state.loading" />
         <div class="wrapper">
             <div class="step">
                 <div class="head">
@@ -46,7 +47,7 @@
                         :class="{ 'default-text': state.theme == 'default', 'blackwhite-text': state.theme == 'blackwhite', 'batik-text': state.theme == 'batik', 'sky-text': state.theme == 'sky' }">
                         <div class="profil"><img :src="state.profil" alt="profil"></div>
                         <div class="name">Jhon Doe</div>
-                        <div class="bio"><small>I like banana</small></div>
+                        <div class="bio"><small>Streaming Gaming Content</small></div>
                     </div>
                     <div class="medsos-link">
                         <div class="instagram"
@@ -97,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-                <button>Create</button>
+                <button @click="createPage()">Create</button>
             </div>
         </div>
     </div>
@@ -107,12 +108,14 @@
 import { onMounted, reactive } from 'vue';
 
 import Cookies from 'js-cookie';
+import swal from 'sweetalert';
 
-import Sidebar from '../layouts/sidebar.vue';
 import defaultTheme from '@/public/img/theme/default.png'
 import batik from '@/public/img/theme/batik.png'
 import sky from '@/public/img/theme/sky.png'
 import blackwhite from '@/public/img/theme/blackwhite.png'
+import { newPage } from '../../../service/pageService';
+import { useRouter } from 'vue-router';
 
 
 useHead({
@@ -127,6 +130,7 @@ useHead({
     ]
 })
 
+const router = useRouter()
 const state = reactive({
     profil: '',
     uid: '',
@@ -134,6 +138,38 @@ const state = reactive({
     pageName: '',
     linkName: ''
 })
+
+async function createPage() {
+    try {
+        if (state.pageName == '') {
+            swal({
+                icon: 'warning',
+                title: 'Page Name is required',
+                button: 'Close'
+            })
+        } else if (state.linkName == '') {
+            swal({
+                icon: 'warning',
+                title: 'Link Name is required',
+                button: 'Close'
+            })
+        } else {
+            state.loading = true
+            const result = await newPage(state.pageName, state.uid, state.profil, state.linkName, state.theme)
+            if (result.status == false) {
+                swal({
+                    icon: 'error',
+                    title: `${result.message}`,
+                    button: 'Close'
+                })
+            } else {
+                router.push(`/page/create/${result.id}`)
+            }
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 
 onMounted(() => {

@@ -32,21 +32,21 @@ export async function newPage(name, uid, photo, linkName, theme) {
             },
             views: 0,
             created_at: `${dateObj.getUTCDate(), dateObj.getMonth() + 1, dateObj.getFullYear()}`,
-            time: Timestamp.now().toMillis,
+            time: Timestamp.now().toMillis(),
         }
 
-        const check = await getDocs(query(collection($db, 'pages'), where('name', '==', name)))
+        const check = await getDocs(query(collection($db, 'pages'), where('linkName', '==', linkName)))
         if (check.empty) {
-            await addDoc(collection($db, 'pages'), newData)
-            return true
+            const add = await addDoc(collection($db, 'pages'), newData)
+            return add
         } else {
             return {
                 status: false,
-                message: 'Name is already in use'
+                message: 'Link name is already in use'
             }
         }
 
     } catch (error) {
-        throw new error
+        throw new Error(error)
     }
 }
