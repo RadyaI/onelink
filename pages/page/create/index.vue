@@ -40,30 +40,60 @@
                 </div>
             </div>
             <div class="preview">
-                <div class="display">
-                    <div class="head">
+                <div class="display"
+                    :class="{ 'default': state.theme == 'default', 'blackwhite': state.theme == 'blackwhite', 'batik': state.theme == 'batik', 'sky': state.theme == 'sky' }">
+                    <div class="head"
+                        :class="{ 'default-text': state.theme == 'default', 'blackwhite-text': state.theme == 'blackwhite', 'batik-text': state.theme == 'batik', 'sky-text': state.theme == 'sky' }">
                         <div class="profil"><img :src="state.profil" alt="profil"></div>
                         <div class="name">Jhon Doe</div>
                         <div class="bio"><small>I like banana</small></div>
                     </div>
                     <div class="medsos-link">
-                        <div class="instagram"><i class="bi bi-instagram"></i></div>
-                        <div class="youtube"><i class="bi bi-youtube"></i></div>
-                        <div class="tiktok"><i class="bi bi-tiktok"></i></div>
-                        <div class="github"><i class="bi bi-github"></i></div>
-                        <div class="wa"><i class="bi bi-whatsapp"></i></div>
-                        <div class="facebook"><i class="bi bi-facebook"></i></div>
+                        <div class="instagram"
+                            :class="{ 'default-medsos': state.theme == 'default', 'blackwhite-medsos': state.theme == 'blackwhite', 'batik-medsos': state.theme == 'batik', 'sky-medsos': state.theme == 'sky' }">
+                            <i class="bi bi-instagram"></i>
+                        </div>
+                        <div class="youtube"
+                            :class="{ 'default-medsos': state.theme == 'default', 'blackwhite-medsos': state.theme == 'blackwhite', 'batik-medsos': state.theme == 'batik', 'sky-medsos': state.theme == 'sky' }">
+                            <i class="bi bi-youtube"></i>
+                        </div>
+                        <div class="tiktok"
+                            :class="{ 'default-medsos': state.theme == 'default', 'blackwhite-medsos': state.theme == 'blackwhite', 'batik-medsos': state.theme == 'batik', 'sky-medsos': state.theme == 'sky' }">
+                            <i class="bi bi-tiktok"></i>
+                        </div>
+                        <div class="github"
+                            :class="{ 'default-medsos': state.theme == 'default', 'blackwhite-medsos': state.theme == 'blackwhite', 'batik-medsos': state.theme == 'batik', 'sky-medsos': state.theme == 'sky' }">
+                            <i class="bi bi-github"></i>
+                        </div>
+                        <div class="wa"
+                            :class="{ 'default-medsos': state.theme == 'default', 'blackwhite-medsos': state.theme == 'blackwhite', 'batik-medsos': state.theme == 'batik', 'sky-medsos': state.theme == 'sky' }">
+                            <i class="bi bi-whatsapp"></i>
+                        </div>
+                        <div class="facebook"
+                            :class="{ 'default-medsos': state.theme == 'default', 'blackwhite-medsos': state.theme == 'blackwhite', 'batik-medsos': state.theme == 'batik', 'sky-medsos': state.theme == 'sky' }">
+                            <i class="bi bi-facebook"></i>
+                        </div>
                     </div>
                     <div class="random-link">
-                        <div class="card"><img :src="state.profil" alt="logo"><small>OneLink Repository Github</small>
+                        <div class="card"
+                            :class="{ 'default-card': state.theme == 'default', 'blackwhite-card': state.theme == 'blackwhite', 'batik-card': state.theme == 'batik', 'sky-card': state.theme == 'sky' }">
+                            <img :src="state.profil" alt="logo"><small>OneLink Repository Github</small>
                         </div>
-                        <div class="card"><img :src="state.profil" alt="logo"><small>OneLink Repository Github</small>
+                        <div class="card"
+                            :class="{ 'default-card': state.theme == 'default', 'blackwhite-card': state.theme == 'blackwhite', 'batik-card': state.theme == 'batik', 'sky-card': state.theme == 'sky' }">
+                            <img :src="state.profil" alt="logo"><small>OneLink Repository Github</small>
                         </div>
-                        <div class="card"><img :src="state.profil" alt="logo"><small>OneLink Repository Github</small>
+                        <div class="card"
+                            :class="{ 'default-card': state.theme == 'default', 'blackwhite-card': state.theme == 'blackwhite', 'batik-card': state.theme == 'batik', 'sky-card': state.theme == 'sky' }">
+                            <img :src="state.profil" alt="logo"><small>OneLink Repository Github</small>
                         </div>
-                        <div class="card"><img :src="state.profil" alt="logo"><small>OneLink Repository Github</small>
+                        <div class="card"
+                            :class="{ 'default-card': state.theme == 'default', 'blackwhite-card': state.theme == 'blackwhite', 'batik-card': state.theme == 'batik', 'sky-card': state.theme == 'sky' }">
+                            <img :src="state.profil" alt="logo"><small>OneLink Repository Github</small>
                         </div>
-                        <div class="card"><img :src="state.profil" alt="logo"><small>OneLink Repository Github</small>
+                        <div class="card"
+                            :class="{ 'default-card': state.theme == 'default', 'blackwhite-card': state.theme == 'blackwhite', 'batik-card': state.theme == 'batik', 'sky-card': state.theme == 'sky' }">
+                            <img :src="state.profil" alt="logo"><small>OneLink Repository Github</small>
                         </div>
                     </div>
                 </div>
@@ -100,7 +130,7 @@ useHead({
 const state = reactive({
     profil: '',
     uid: '',
-    theme: '',
+    theme: 'default',
     pageName: '',
     linkName: ''
 })
@@ -286,6 +316,7 @@ a {
     margin-top: 15px;
     text-align: center;
     font-weight: bold;
+    font-size: 27px;
 }
 
 .wrapper .preview .display .head .bio {
@@ -296,16 +327,22 @@ a {
     margin-top: 20px;
     width: 100%;
     display: flex;
-    gap: 15px;
+    gap: 12px;
     justify-content: center;
 }
 
 .wrapper .preview .display .medsos-link div {
     cursor: pointer;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .wrapper .preview .display .medsos-link div i {
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .wrapper .preview .display .random-link {
@@ -315,7 +352,6 @@ a {
 
 .wrapper .preview .display .random-link .card {
     margin: 0 auto;
-    border: 1px solid black;
     width: 90%;
     height: 40px;
     margin-top: 10px;
@@ -351,4 +387,90 @@ a {
     background-color: var(--text-optional);
     font-weight: bold;
 }
+
+/* KHUSUS THEME */
+
+/* DEFAULT */
+.default {
+    background-color: #d1d4db;
+}
+
+.default-text {
+    color: #000000;
+}
+
+.default-medsos {
+    background-color: #ffffff;
+}
+
+.default-card {
+    color: #000000;
+    background-color: #ffffff;
+    border: none;
+}
+
+/* DEFAULT */
+
+/* blackwhite */
+.blackwhite {
+    background-color: #ffffff;
+}
+
+.blackwhite-text {
+    color: #000000;
+}
+
+.blackwhite-medsos {
+    background-color: #ffffff;
+}
+
+.blackwhite-card {
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid black;
+}
+
+/* blackwhite */
+
+/* BATIK */
+.batik {
+    background: url('@/public/img/theme/batik-bg.png');
+}
+
+.batik-text {
+    color: #ffffff;
+}
+
+.batik-medsos {
+    background-color: #ffffff;
+}
+
+.batik-card {
+    color: #ffffff;
+    background-color: #774045;
+}
+
+/* BATIK */
+
+/* sky */
+.sky {
+    background: linear-gradient(#0398ff, #98e6ff);
+}
+
+.sky-text {
+    color: #000000;
+}
+
+.sky-medsos {
+    background-color: #ffffff;
+}
+
+.sky-card {
+    color: #000000;
+    background-color: #0398ff;
+}
+
+/* sky */
+
+/* KHUSUS THEME */
 </style>
