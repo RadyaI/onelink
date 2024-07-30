@@ -22,11 +22,11 @@
                                 <i class="bi bi-arrow-down"></i>
                             </div>
                             <div class="menu-list" :style="{ 'display': filter.toggleSorting }">
-                                <div class="list" @click="filter.lastAdded = filter.lastAdded == true ? false : true">
-                                    <p>Last added</p> <i class="bi bi-check-lg" v-if="filter.lastAdded"></i>
+                                <div class="list" @click="filter.sort = 'lastadded'">
+                                    <p>Last added</p> <i class="bi bi-check-lg" v-if="filter.sort === 'lastadded'"></i>
                                 </div>
-                                <div class="list" @click="filter.name = filter.name == true ? false : true">
-                                    <p>Name</p> <i class="bi bi-check-lg" v-if="filter.name"></i>
+                                <div class="list" @click="filter.sort = 'name'">
+                                    <p>Name</p> <i class="bi bi-check-lg" v-if="filter.sort === 'name'"></i>
                                 </div>
                             </div>
                         </div>
@@ -92,8 +92,7 @@ useHead({
 
 const filter = reactive({
     toggleSorting: 'none',
-    lastAdded: false,
-    name: false,
+    sort: '',
     popular: false
 })
 
