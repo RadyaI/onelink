@@ -1,5 +1,6 @@
 <template>
     <div>
+        <loadingToPage v-if="state.loading" />
         <div class="row">
             <Sidebar />
             <div class="dashboard">
@@ -11,7 +12,7 @@
                         QUICK ACCESS
                     </div>
                     <div class="card">
-                        <div class="make-page">
+                        <div class="make-page" @click="createNewPage()">
                             <i class="bi bi-border-all"></i>
                             <p>New Page</p>
                             <i class="bi bi-arrow-right"></i>
@@ -52,13 +53,15 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, reactive } from 'vue';
+import { useRouter } from 'vue-router';
 
 import Cookies from 'js-cookie';
 
 import Sidebar from '../layouts/sidebar.vue';
+import loadingToPage from '@/components/loadingToPage.vue'
 
-
+const route = useRouter()
 useHead({
     title: 'OneLink - Dashboard',
     link: [
@@ -70,6 +73,17 @@ useHead({
         { name: 'seo', content: 'onelink, link, bio' },
     ]
 })
+
+const state = reactive({
+
+})
+
+function createNewPage() {
+    state.loading = true
+    setTimeout(() => {
+        route.push('/page/create')
+    }, 1100);
+}
 
 onMounted(() => {
     const auth = Cookies.get('isLoggedIn')
@@ -257,16 +271,18 @@ onMounted(() => {
     margin-left: 20px;
 }
 
-.dashboard .analytic .card .all-link-visit .value{
+.dashboard .analytic .card .all-link-visit .value {
     font-size: 35px;
     margin-top: 20px;
     margin-left: 15px;
 }
-.dashboard .analytic .card .all-link-visit .name{
+
+.dashboard .analytic .card .all-link-visit .name {
     margin-bottom: 20px;
     margin-left: 15px;
 }
-.dashboard .analytic .card .all-link-visit .name i{
+
+.dashboard .analytic .card .all-link-visit .name i {
     color: purple;
 }
 
@@ -282,7 +298,7 @@ onMounted(() => {
     margin-left: 20px;
 }
 
-.dashboard .analytic .card .popular-page-visit .value{
+.dashboard .analytic .card .popular-page-visit .value {
     font-size: 18px;
     color: blue;
     text-decoration: underline;
@@ -290,11 +306,13 @@ onMounted(() => {
     margin-top: 20px;
     margin-left: 15px;
 }
-.dashboard .analytic .card .popular-page-visit .name{
+
+.dashboard .analytic .card .popular-page-visit .name {
     margin-bottom: 20px;
     margin-left: 15px;
 }
-.dashboard .analytic .card .popular-page-visit .name i{
+
+.dashboard .analytic .card .popular-page-visit .name i {
     color: red;
 }
 
@@ -310,7 +328,7 @@ onMounted(() => {
     margin-left: 20px;
 }
 
-.dashboard .analytic .card .popular-link-visit .value{
+.dashboard .analytic .card .popular-link-visit .value {
     font-size: 18px;
     color: blue;
     text-decoration: underline;
@@ -318,11 +336,13 @@ onMounted(() => {
     margin-top: 20px;
     margin-left: 15px;
 }
-.dashboard .analytic .card .popular-link-visit .name{
+
+.dashboard .analytic .card .popular-link-visit .name {
     margin-bottom: 20px;
     margin-left: 15px;
 }
-.dashboard .analytic .card .popular-link-visit .name i{
+
+.dashboard .analytic .card .popular-link-visit .name i {
     color: purple;
 }
 </style>

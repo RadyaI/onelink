@@ -1,5 +1,6 @@
 <template>
     <div>
+        <loadingToPage v-if="state.loading" />
         <div class="row">
             <Sidebar />
             <div class="page">
@@ -7,7 +8,7 @@
                     <h2>Page</h2>
                 </div>
                 <div class="button">
-                    <button>New page</button>
+                    <button @click="createNewPage()">New page</button>
                 </div>
                 <div class="tabel-container">
                     <div class="filter">
@@ -66,12 +67,14 @@
 
 <script setup>
 import { onMounted, reactive } from 'vue';
+import { useRouter } from 'vue-router';
 
 import Cookies from 'js-cookie';
 
+import loadingToPage from '@/components/loadingToPage.vue'
 import Sidebar from '../layouts/sidebar.vue';
 
-
+const route = useRouter()
 useHead({
     title: 'OneLink - Page',
     link: [
@@ -90,6 +93,15 @@ const filter = reactive({
     name: false,
     popular: false
 })
+
+const state = reactive({})
+
+function createNewPage() {
+    state.loading = true
+    setTimeout(() => {
+        route.push('/page/create')
+    }, 1100);
+}
 
 onMounted(() => {
     const auth = Cookies.get('isLoggedIn')
@@ -273,11 +285,11 @@ a {
     margin-top: 10px;
 }
 
-.page .tabel-container .tabel::-webkit-scrollbar{
+.page .tabel-container .tabel::-webkit-scrollbar {
     width: 10px;
 }
 
-.page .tabel-container .tabel::-webkit-scrollbar-thumb{
+.page .tabel-container .tabel::-webkit-scrollbar-thumb {
     background-color: var(--text-optional);
     border-radius: 50px;
 }

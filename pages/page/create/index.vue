@@ -3,10 +3,12 @@
         <div class="wrapper">
             <div class="step">
                 <div class="head">
-                    <i class="bi bi-arrow-left"></i>
                     <div class="title">
                         <h1>Create New Page</h1>
                     </div>
+                    <router-link to="/page">
+                        <p>Home</p>
+                    </router-link>
                     <p>Please enter some information below.</p>
                 </div>
                 <div class="template">
@@ -14,9 +16,12 @@
                         <h3>1. Select a theme</h3>
                     </div>
                     <div class="card">
-                        <div class="template-list"></div>
-                        <div class="template-list"></div>
-                        <div class="template-list"></div>
+                        <div class="template-list" @click="state.theme = 'default'"><img :src="defaultTheme"
+                                alt="default"></div>
+                        <div class="template-list" @click="state.theme = 'blackwhite'"><img :src="blackwhite"
+                                alt="blackwhite"></div>
+                        <div class="template-list" @click="state.theme = 'batik'"><img :src="batik" alt="batik"></div>
+                        <div class="template-list" @click="state.theme = 'sky'"><img :src="sky" alt="sky"></div>
                     </div>
                 </div>
                 <div class="name">
@@ -25,7 +30,7 @@
                     </div>
                     <div class="name-page">
                         <p><b>Page Name</b></p>
-                        <input type="text" placeholder="My Page">
+                        <input type="text" placeholder="My Page" v-model="state.pageName">
                     </div>
                     <div class="name-link">
                         <p><b>Link Name</b></p>
@@ -50,11 +55,16 @@
                         <div class="facebook"><i class="bi bi-facebook"></i></div>
                     </div>
                     <div class="random-link">
-                        <div class="card"><img src="" alt="logo"><small>OneLink Repository Github</small></div>
-                        <div class="card"><img src="" alt="logo"><small>OneLink Repository Github</small></div>
-                        <div class="card"><img src="" alt="logo"><small>OneLink Repository Github</small></div>
-                        <div class="card"><img src="" alt="logo"><small>OneLink Repository Github</small></div>
-                        <div class="card"><img src="" alt="logo"><small>OneLink Repository Github</small></div>
+                        <div class="card"><img :src="state.profil" alt="logo"><small>OneLink Repository Github</small>
+                        </div>
+                        <div class="card"><img :src="state.profil" alt="logo"><small>OneLink Repository Github</small>
+                        </div>
+                        <div class="card"><img :src="state.profil" alt="logo"><small>OneLink Repository Github</small>
+                        </div>
+                        <div class="card"><img :src="state.profil" alt="logo"><small>OneLink Repository Github</small>
+                        </div>
+                        <div class="card"><img :src="state.profil" alt="logo"><small>OneLink Repository Github</small>
+                        </div>
                     </div>
                 </div>
                 <button>Create</button>
@@ -69,6 +79,10 @@ import { onMounted, reactive } from 'vue';
 import Cookies from 'js-cookie';
 
 import Sidebar from '../layouts/sidebar.vue';
+import defaultTheme from '@/public/img/theme/default.png'
+import batik from '@/public/img/theme/batik.png'
+import sky from '@/public/img/theme/sky.png'
+import blackwhite from '@/public/img/theme/blackwhite.png'
 
 
 useHead({
@@ -120,6 +134,11 @@ onMounted(() => {
     --text-optional: #ffd60a;
 }
 
+a {
+    color: blue;
+    text-decoration: underline;
+}
+
 .wrapper {
     width: 100%;
     height: 100vh;
@@ -134,7 +153,7 @@ onMounted(() => {
 
 .wrapper .step .head {
     width: 90%;
-    height: 15vh;
+    height: 18vh;
     margin: 0 auto;
     margin-top: 20px;
 }
@@ -142,6 +161,16 @@ onMounted(() => {
 
 .wrapper .step .head p {
     margin-top: 10px;
+}
+
+.wrapper .step .head p:nth-child(2) {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.wrapper .step .head p:last-child {
+    margin-bottom: 10px;
 }
 
 .wrapper .step .template {
@@ -165,7 +194,7 @@ onMounted(() => {
 }
 
 .wrapper .step .template .card .template-list {
-    border: 1px solid black;
+    overflow: hidden;
     border-radius: 5px;
     width: 100px;
     height: 80%;
@@ -231,9 +260,10 @@ onMounted(() => {
     border: 1px solid grey;
     width: 50%;
     height: 80%;
+    border-radius: 10px;
 }
 
-.wrapper .preview .display::-webkit-scrollbar{
+.wrapper .preview .display::-webkit-scrollbar {
     width: 0;
 }
 
@@ -274,7 +304,7 @@ onMounted(() => {
     cursor: pointer;
 }
 
-.wrapper .preview .display .medsos-link div i{
+.wrapper .preview .display .medsos-link div i {
     font-size: 25px;
 }
 
@@ -283,7 +313,7 @@ onMounted(() => {
     width: 100%;
 }
 
-.wrapper .preview .display .random-link .card{
+.wrapper .preview .display .random-link .card {
     margin: 0 auto;
     border: 1px solid black;
     width: 90%;
@@ -296,11 +326,11 @@ onMounted(() => {
     border-radius: 10px;
 }
 
-.wrapper .preview .display .random-link .card:last-child{
+.wrapper .preview .display .random-link .card:last-child {
     margin-bottom: 10px;
 }
 
-.wrapper .preview .display .random-link .card img{
+.wrapper .preview .display .random-link .card img {
     width: 30px;
     height: 30px;
     border-radius: 20%;
@@ -308,7 +338,7 @@ onMounted(() => {
     margin-left: 5px;
 }
 
-.wrapper .preview .display .random-link .card small{
+.wrapper .preview .display .random-link .card small {
     margin-left: 10px;
 }
 
