@@ -66,7 +66,7 @@ function display(value) {
     loading.value = true
     setTimeout(() => {
         loading.value = false
-        router.push(value)
+        router.push(`/${value}`)
     }, 1100);
 }
 
