@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs, query, Timestamp, where } from "firebase/firestore"
+import { addDoc, collection, deleteDoc, doc, getDocs, query, Timestamp, where } from "firebase/firestore"
 import { useNuxtApp } from "nuxt/app"
 
 
@@ -28,11 +28,27 @@ export async function newPage(name, uid, photo, linkName, theme) {
             waStatus: true,
             facebook: 'https://facebook.com/',
             facebookStatus: true,
+
             card1: 'First Link',
+            card1status: true,
+            card1link: 'https://example.com/',
+
             card2: 'Second Link',
+            card2status: true,
+            card2link: 'https://example.com/',
+
             card3: 'Third Link',
+            card3status: true,
+            card3link: 'https://example.com/',
+
             card4: 'Fourth Link',
+            card4status: true,
+            card4link: 'https://example.com/',
+
             card5: 'Last Link',
+            card5status: true,
+            card5link: 'https://example.com/',
+
             views: 0,
             created_at: `${dateObj.getUTCDate()}/${dateObj.getMonth() + 1}/${dateObj.getFullYear()}`,
             time: Timestamp.now().toMillis(),
@@ -49,6 +65,16 @@ export async function newPage(name, uid, photo, linkName, theme) {
             }
         }
 
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
+export async function deletePage(id) {
+    try {
+        const { $db } = useNuxtApp()
+        const del = await deleteDoc(doc($db, 'pages', id))
+        return true
     } catch (error) {
         throw new Error(error)
     }
