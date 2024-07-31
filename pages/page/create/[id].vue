@@ -176,7 +176,7 @@
                 </div>
                 <div class="preview">
                     <div class="display"
-                        :class="{ 'tes': state.pageData.theme == 'default', 'blackwhite': state.pageData.theme == 'blackwhite', 'batik': state.pageData.theme == 'batik', 'sky': state.pageData.theme == 'sky' }">
+                        :class="{ 'default': state.pageData.theme == 'default', 'blackwhite': state.pageData.theme == 'blackwhite', 'batik': state.pageData.theme == 'batik', 'sky': state.pageData.theme == 'sky' }">
                         <div class="head"
                             :class="{ 'default-text': state.pageData.theme == 'default', 'blackwhite-text': state.pageData.theme == 'blackwhite', 'batik-text': state.pageData.theme == 'batik', 'sky-text': state.pageData.theme == 'sky' }">
                             <div class="profil"><img :src="state.pageData.profil" alt="profil"></div>
@@ -184,49 +184,49 @@
                             <div class="bio"><small>{{ state.pageData.bio }}</small></div>
                         </div>
                         <div class="medsos-link">
-                            <div class="instagram"
+                            <div class="instagram" v-if="state.pageData.instagramStatus"
                                 :class="{ 'default-medsos': state.pageData.theme == 'default', 'blackwhite-medsos': state.pageData.theme == 'blackwhite', 'batik-medsos': state.pageData.theme == 'batik', 'sky-medsos': state.pageData.theme == 'sky' }">
                                 <i class="bi bi-instagram"></i>
                             </div>
-                            <div class="youtube"
+                            <div class="youtube" v-if="state.pageData.youtubeStatus"
                                 :class="{ 'default-medsos': state.pageData.theme == 'default', 'blackwhite-medsos': state.pageData.theme == 'blackwhite', 'batik-medsos': state.pageData.theme == 'batik', 'sky-medsos': state.pageData.theme == 'sky' }">
                                 <i class="bi bi-youtube"></i>
                             </div>
-                            <div class="tiktok"
+                            <div class="tiktok" v-if="state.pageData.tiktokStatus"
                                 :class="{ 'default-medsos': state.pageData.theme == 'default', 'blackwhite-medsos': state.pageData.theme == 'blackwhite', 'batik-medsos': state.pageData.theme == 'batik', 'sky-medsos': state.pageData.theme == 'sky' }">
                                 <i class="bi bi-tiktok"></i>
                             </div>
-                            <div class="github"
+                            <div class="github" v-if="state.pageData.githubStatus"
                                 :class="{ 'default-medsos': state.pageData.theme == 'default', 'blackwhite-medsos': state.pageData.theme == 'blackwhite', 'batik-medsos': state.pageData.theme == 'batik', 'sky-medsos': state.pageData.theme == 'sky' }">
                                 <i class="bi bi-github"></i>
                             </div>
-                            <div class="wa"
+                            <div class="wa" v-if="state.pageData.waStatus"
                                 :class="{ 'default-medsos': state.pageData.theme == 'default', 'blackwhite-medsos': state.pageData.theme == 'blackwhite', 'batik-medsos': state.pageData.theme == 'batik', 'sky-medsos': state.pageData.theme == 'sky' }">
                                 <i class="bi bi-whatsapp"></i>
                             </div>
-                            <div class="facebook"
+                            <div class="facebook" v-if="state.pageData.facebookStatus"
                                 :class="{ 'default-medsos': state.pageData.theme == 'default', 'blackwhite-medsos': state.pageData.theme == 'blackwhite', 'batik-medsos': state.pageData.theme == 'batik', 'sky-medsos': state.pageData.theme == 'sky' }">
                                 <i class="bi bi-facebook"></i>
                             </div>
                         </div>
                         <div class="random-link">
-                            <div class="card"
+                            <div class="card" v-if="state.pageData.card1status"
                                 :class="{ 'default-card': state.pageData.theme == 'default', 'blackwhite-card': state.pageData.theme == 'blackwhite', 'batik-card': state.pageData.theme == 'batik', 'sky-card': state.pageData.theme == 'sky' }">
                                 <img :src="state.pageData.profil" alt="logo"><small>{{ state.pageData.card1 }}</small>
                             </div>
-                            <div class="card"
+                            <div class="card" v-if="state.pageData.card2status"
                                 :class="{ 'default-card': state.pageData.theme == 'default', 'blackwhite-card': state.pageData.theme == 'blackwhite', 'batik-card': state.pageData.theme == 'batik', 'sky-card': state.pageData.theme == 'sky' }">
                                 <img :src="state.pageData.profil" alt="logo"><small>{{ state.pageData.card2 }}</small>
                             </div>
-                            <div class="card"
+                            <div class="card" v-if="state.pageData.card3status"
                                 :class="{ 'default-card': state.pageData.theme == 'default', 'blackwhite-card': state.pageData.theme == 'blackwhite', 'batik-card': state.pageData.theme == 'batik', 'sky-card': state.pageData.theme == 'sky' }">
                                 <img :src="state.pageData.profil" alt="logo"><small>{{ state.pageData.card3 }}</small>
                             </div>
-                            <div class="card"
+                            <div class="card" v-if="state.pageData.card4status"
                                 :class="{ 'default-card': state.pageData.theme == 'default', 'blackwhite-card': state.pageData.theme == 'blackwhite', 'batik-card': state.pageData.theme == 'batik', 'sky-card': state.pageData.theme == 'sky' }">
                                 <img :src="state.pageData.profil" alt="logo"><small>{{ state.pageData.card4 }}</small>
                             </div>
-                            <div class="card"
+                            <div class="card" v-if="state.pageData.card5status"
                                 :class="{ 'default-card': state.pageData.theme == 'default', 'blackwhite-card': state.pageData.theme == 'blackwhite', 'batik-card': state.pageData.theme == 'batik', 'sky-card': state.pageData.theme == 'sky' }">
                                 <img :src="state.pageData.profil" alt="logo"><small>{{ state.pageData.card5 }}</small>
                             </div>
@@ -243,7 +243,7 @@ import { onBeforeMount, onUpdated, reactive } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useNuxtApp } from 'nuxt/app';
 
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import swal from 'sweetalert';
 
 import loadingToPage from '../../../components/loadingToPage.vue'
@@ -291,6 +291,17 @@ async function getPageData() {
     }
 }
 
+async function updatePage() {
+    try {
+        const id = route.params.id
+        const { $db } = useNuxtApp()
+        const docRef = doc($db, 'pages', id)
+        await updateDoc(docRef, state.pageData)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 async function pageDelete() {
     try {
         const alert = await swal({
@@ -332,6 +343,7 @@ onUpdated(() => {
 </script>
 
 <style scoped>
+
 :root {
     --primary: #000814;
     --secondary: #001d3d;
@@ -344,11 +356,10 @@ onUpdated(() => {
 .wrapper {
     width: 100%;
     height: 100vh;
-    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .wrapper .header {
-    border: 1px solid black;
     width: 100%;
     height: 10vh;
 }
@@ -439,7 +450,7 @@ onUpdated(() => {
     margin-top: 10px;
 }
 
-.wrapper .row .setting .card .template h3{
+.wrapper .row .setting .card .template h3 {
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -449,13 +460,13 @@ onUpdated(() => {
     gap: 10px;
 }
 
-.wrapper .row .setting .card .template .card .template-list{
+.wrapper .row .setting .card .template .card .template-list {
     border: 1px solid black;
     cursor: pointer;
     overflow: hidden;
 }
 
-.wrapper .row .setting .card .template .card .template-list img{
+.wrapper .row .setting .card .template .card .template-list img {
     height: 100%;
 }
 
@@ -607,7 +618,7 @@ onUpdated(() => {
 
 .wrapper .row .setting .btn-group button:first-child {
     background-color: red;
-    color: var(--text-light);
+    color: white;
 }
 
 .wrapper .row .setting .btn-group button {
@@ -619,8 +630,8 @@ onUpdated(() => {
     font-weight: bold;
     border: none;
     border-radius: 5px;
-    background-color: var(--text-optional);
-    color: var(--optional);
+    background-color: #ffd60a;
+    color: black;
 }
 
 .wrapper .row .preview {
@@ -637,6 +648,7 @@ onUpdated(() => {
     height: 90%;
     margin: 0 auto;
     margin-top: 20px;
+    overflow: auto;
 }
 
 .wrapper .row .preview .display::-webkit-scrollbar {
