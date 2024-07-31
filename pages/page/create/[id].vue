@@ -321,13 +321,10 @@ async function updatePage() {
             const { $db } = useNuxtApp()
             const docRef = doc($db, 'pages', id)
             await updateDoc(docRef, state.pageData)
-            state.btnUpdate = 'Save changes'
-            swal({
-                icon: 'success',
-                title: false,
-                button: false,
-                timer: 1000,
-            })
+            state.btnUpdate = 'Saved successfully'
+            setTimeout(() => {
+                state.btnUpdate = 'Save changes'
+            }, 1200);
         }
     } catch (error) {
         console.log(error)
@@ -443,7 +440,7 @@ onUpdated(() => {
     margin-top: 10px;
 }
 
-.wrapper .row .setting .card .profil img{
+.wrapper .row .setting .card .profil img {
     object-fit: cover;
 }
 
@@ -704,7 +701,7 @@ onUpdated(() => {
     overflow: hidden;
 }
 
-.wrapper .preview .display .head .profil img{
+.wrapper .preview .display .head .profil img {
     width: 60px;
     height: 60px;
 }
