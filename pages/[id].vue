@@ -8,9 +8,22 @@
 
 <script setup>
 import { onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute()
+useHead({
+    title: `OneLink - ${route.params.id}`,
+    link: [
+        { rel: '', href: '' }
+    ],
+    meta: [
+        { name: 'description', content: '' },
+    ]
+})
+
 
 onMounted(() => {
-    console.log('coming soon')
+    console.log('coming soon => ' + route.params.id)
 })
 </script>
 

@@ -14,11 +14,25 @@
                         </div>
                         <div class="name">
                             <h3>Name:</h3>
-                            <input type="text" v-model="state.pageData.pageName">
+                            <input type="text" v-model="state.pageData.name">
                         </div>
                         <div class="bio">
                             <h3>Description:</h3>
                             <input type="text" v-model="state.pageData.bio">
+                        </div>
+                        <div class="template">
+                            <h3>Theme: </h3>
+                            <div class="card">
+                                <div class="template-list" @click="state.pageData.theme = 'default'"><img
+                                        :src="defaultTheme" alt="default"></div>
+                                <div class="template-list" @click="state.pageData.theme = 'blackwhite'"><img
+                                        :src="blackwhite" alt="blackwhite"></div>
+                                <div class="template-list" @click="state.pageData.theme = 'batik'"><img :src="batik"
+                                        alt="batik"></div>
+                                <div class="template-list" @click="state.pageData.theme = 'sky'"><img :src="sky"
+                                        alt="sky">
+                                </div>
+                            </div>
                         </div>
                         <div class="medsos">
                             <h3>Social Media:</h3>
@@ -161,7 +175,63 @@
                     </div>
                 </div>
                 <div class="preview">
-                    <div class="display"></div>
+                    <div class="display"
+                        :class="{ 'tes': state.pageData.theme == 'default', 'blackwhite': state.pageData.theme == 'blackwhite', 'batik': state.pageData.theme == 'batik', 'sky': state.pageData.theme == 'sky' }">
+                        <div class="head"
+                            :class="{ 'default-text': state.pageData.theme == 'default', 'blackwhite-text': state.pageData.theme == 'blackwhite', 'batik-text': state.pageData.theme == 'batik', 'sky-text': state.pageData.theme == 'sky' }">
+                            <div class="profil"><img :src="state.pageData.profil" alt="profil"></div>
+                            <div class="name">{{ state.pageData.name }}</div>
+                            <div class="bio"><small>{{ state.pageData.bio }}</small></div>
+                        </div>
+                        <div class="medsos-link">
+                            <div class="instagram"
+                                :class="{ 'default-medsos': state.pageData.theme == 'default', 'blackwhite-medsos': state.pageData.theme == 'blackwhite', 'batik-medsos': state.pageData.theme == 'batik', 'sky-medsos': state.pageData.theme == 'sky' }">
+                                <i class="bi bi-instagram"></i>
+                            </div>
+                            <div class="youtube"
+                                :class="{ 'default-medsos': state.pageData.theme == 'default', 'blackwhite-medsos': state.pageData.theme == 'blackwhite', 'batik-medsos': state.pageData.theme == 'batik', 'sky-medsos': state.pageData.theme == 'sky' }">
+                                <i class="bi bi-youtube"></i>
+                            </div>
+                            <div class="tiktok"
+                                :class="{ 'default-medsos': state.pageData.theme == 'default', 'blackwhite-medsos': state.pageData.theme == 'blackwhite', 'batik-medsos': state.pageData.theme == 'batik', 'sky-medsos': state.pageData.theme == 'sky' }">
+                                <i class="bi bi-tiktok"></i>
+                            </div>
+                            <div class="github"
+                                :class="{ 'default-medsos': state.pageData.theme == 'default', 'blackwhite-medsos': state.pageData.theme == 'blackwhite', 'batik-medsos': state.pageData.theme == 'batik', 'sky-medsos': state.pageData.theme == 'sky' }">
+                                <i class="bi bi-github"></i>
+                            </div>
+                            <div class="wa"
+                                :class="{ 'default-medsos': state.pageData.theme == 'default', 'blackwhite-medsos': state.pageData.theme == 'blackwhite', 'batik-medsos': state.pageData.theme == 'batik', 'sky-medsos': state.pageData.theme == 'sky' }">
+                                <i class="bi bi-whatsapp"></i>
+                            </div>
+                            <div class="facebook"
+                                :class="{ 'default-medsos': state.pageData.theme == 'default', 'blackwhite-medsos': state.pageData.theme == 'blackwhite', 'batik-medsos': state.pageData.theme == 'batik', 'sky-medsos': state.pageData.theme == 'sky' }">
+                                <i class="bi bi-facebook"></i>
+                            </div>
+                        </div>
+                        <div class="random-link">
+                            <div class="card"
+                                :class="{ 'default-card': state.pageData.theme == 'default', 'blackwhite-card': state.pageData.theme == 'blackwhite', 'batik-card': state.pageData.theme == 'batik', 'sky-card': state.pageData.theme == 'sky' }">
+                                <img :src="state.pageData.profil" alt="logo"><small>{{ state.pageData.card1 }}</small>
+                            </div>
+                            <div class="card"
+                                :class="{ 'default-card': state.pageData.theme == 'default', 'blackwhite-card': state.pageData.theme == 'blackwhite', 'batik-card': state.pageData.theme == 'batik', 'sky-card': state.pageData.theme == 'sky' }">
+                                <img :src="state.pageData.profil" alt="logo"><small>{{ state.pageData.card2 }}</small>
+                            </div>
+                            <div class="card"
+                                :class="{ 'default-card': state.pageData.theme == 'default', 'blackwhite-card': state.pageData.theme == 'blackwhite', 'batik-card': state.pageData.theme == 'batik', 'sky-card': state.pageData.theme == 'sky' }">
+                                <img :src="state.pageData.profil" alt="logo"><small>{{ state.pageData.card3 }}</small>
+                            </div>
+                            <div class="card"
+                                :class="{ 'default-card': state.pageData.theme == 'default', 'blackwhite-card': state.pageData.theme == 'blackwhite', 'batik-card': state.pageData.theme == 'batik', 'sky-card': state.pageData.theme == 'sky' }">
+                                <img :src="state.pageData.profil" alt="logo"><small>{{ state.pageData.card4 }}</small>
+                            </div>
+                            <div class="card"
+                                :class="{ 'default-card': state.pageData.theme == 'default', 'blackwhite-card': state.pageData.theme == 'blackwhite', 'batik-card': state.pageData.theme == 'batik', 'sky-card': state.pageData.theme == 'sky' }">
+                                <img :src="state.pageData.profil" alt="logo"><small>{{ state.pageData.card5 }}</small>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -169,7 +239,7 @@
 </template>
 
 <script setup>
-import { onBeforeMount, onMounted, reactive } from 'vue';
+import { onBeforeMount, onUpdated, reactive } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useNuxtApp } from 'nuxt/app';
 
@@ -178,6 +248,11 @@ import swal from 'sweetalert';
 
 import loadingToPage from '../../../components/loadingToPage.vue'
 import { deletePage } from '../../../service/pageService'
+
+import defaultTheme from '@/public/img/theme/default.png'
+import batik from '@/public/img/theme/batik.png'
+import sky from '@/public/img/theme/sky.png'
+import blackwhite from '@/public/img/theme/blackwhite.png'
 
 const router = useRouter()
 const route = useRoute()
@@ -249,6 +324,10 @@ async function pageDelete() {
 
 onBeforeMount(() => {
     getPageData()
+})
+
+onUpdated(() => {
+    console.log(state.pageData.theme)
 })
 </script>
 
@@ -352,6 +431,32 @@ onBeforeMount(() => {
     border-radius: 5px;
     margin-top: 10px;
     padding: 0 5px;
+}
+
+.wrapper .row .setting .card .template {
+    width: 80%;
+    padding: 0 5px;
+    margin-top: 10px;
+}
+
+.wrapper .row .setting .card .template h3{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.wrapper .row .setting .card .template .card {
+    display: flex;
+    gap: 10px;
+}
+
+.wrapper .row .setting .card .template .card .template-list{
+    border: 1px solid black;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.wrapper .row .setting .card .template .card .template-list img{
+    height: 100%;
 }
 
 .wrapper .row .setting .card .medsos {
@@ -500,6 +605,11 @@ onBeforeMount(() => {
     margin-left: 80px;
 }
 
+.wrapper .row .setting .btn-group button:first-child {
+    background-color: red;
+    color: var(--text-light);
+}
+
 .wrapper .row .setting .btn-group button {
     margin-left: 25px;
     margin-top: 10px;
@@ -528,4 +638,175 @@ onBeforeMount(() => {
     margin: 0 auto;
     margin-top: 20px;
 }
+
+.wrapper .row .preview .display::-webkit-scrollbar {
+    width: 0;
+}
+
+.wrapper .preview .display .head {
+    width: 100%;
+    height: auto;
+}
+
+.wrapper .preview .display .head .profil {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+.wrapper .preview .display .head .name {
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 27px;
+}
+
+.wrapper .preview .display .head .bio {
+    text-align: center;
+}
+
+.wrapper .preview .display .medsos-link {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.wrapper .preview .display .medsos-link div {
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .preview .display .medsos-link div i {
+    font-size: 20px;
+}
+
+.wrapper .preview .display .random-link {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.wrapper .preview .display .random-link .card {
+    margin: 0 auto;
+    width: 90%;
+    height: 40px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.wrapper .preview .display .random-link .card:last-child {
+    margin-bottom: 10px;
+}
+
+.wrapper .preview .display .random-link .card img {
+    width: 30px;
+    height: 30px;
+    border-radius: 20%;
+    border: 1px solid black;
+    margin-left: 5px;
+}
+
+.wrapper .preview .display .random-link .card small {
+    margin-left: 10px;
+}
+
+/* KHUSUS THEME */
+
+/* DEFAULT */
+.default {
+    background-color: pink;
+}
+
+.default-text {
+    color: #000000;
+}
+
+.default-medsos {
+    background-color: #ffffff;
+}
+
+.default-card {
+    color: #000000;
+    background-color: #ffffff;
+    border: none;
+}
+
+/* DEFAULT */
+
+/* blackwhite */
+.blackwhite {
+    background-color: #ffffff;
+}
+
+.blackwhite-text {
+    color: #000000;
+}
+
+.blackwhite-medsos {
+    background-color: #ffffff;
+}
+
+.blackwhite-card {
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid black;
+}
+
+/* blackwhite */
+
+/* BATIK */
+.batik {
+    background: url('@/public/img/theme/batik-bg.png');
+}
+
+.batik-text {
+    color: #ffffff;
+}
+
+.batik-medsos {
+    background-color: #ffffff;
+}
+
+.batik-card {
+    color: #ffffff;
+    background-color: #774045;
+}
+
+/* BATIK */
+
+/* sky */
+.sky {
+    background: linear-gradient(#0398ff, #98e6ff);
+}
+
+.sky-text {
+    color: #000000;
+}
+
+.sky-medsos {
+    background-color: #ffffff;
+}
+
+.sky-card {
+    color: #000000;
+    background-color: #0398ff;
+}
+
+/* sky */
+
+/* KHUSUS THEME */
 </style>
