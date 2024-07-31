@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="profil">
                             <h3>Profil Image:</h3>
-                            <input type="file">
+                            <input type="file" @change="handleFile">
                         </div>
                         <div class="name">
                             <h3>Name:</h3>
@@ -171,7 +171,7 @@
                     </div>
                     <div class="btn-group">
                         <button @click="pageDelete()">Delete Page</button>
-                        <button>Save Changes</button>
+                        <button @click="updatePage()">{{ state.btnUpdate }}</button>
                     </div>
                 </div>
                 <div class="preview">
@@ -244,6 +244,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { useNuxtApp } from 'nuxt/app';
 
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import swal from 'sweetalert';
 
 import loadingToPage from '../../../components/loadingToPage.vue'
@@ -269,7 +270,9 @@ useHead({
 })
 
 const state = reactive({
-    pageData: {}
+    pageData: {},
+    btnUpdate: 'Save changes',
+    file: null
 })
 
 function backHome() {
@@ -277,6 +280,20 @@ function backHome() {
     setTimeout(() => {
         router.push('/page')
     }, 1100);
+}
+
+async function handleFile(event) {
+    try {
+        state.file = event.target.files[0]
+        const { $storage } = useNuxtApp()
+        const storageRef = ref($storage, `profil/${state.file.name}`)
+        state.btnUpdate = 'Uploading photo'
+        const upload = await uploadBytes(storageRef, state.file)
+        state.btnUpdate = 'Save changes'
+        state.pageData.profil = await getDownloadURL(upload.ref)
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 async function getPageData() {
@@ -293,10 +310,25 @@ async function getPageData() {
 
 async function updatePage() {
     try {
-        const id = route.params.id
-        const { $db } = useNuxtApp()
-        const docRef = doc($db, 'pages', id)
-        await updateDoc(docRef, state.pageData)
+        const alert = await swal({
+            icon: 'warning',
+            title: 'Update page data?',
+            buttons: ['No', 'Yes'],
+        })
+        if (alert) {
+            state.btnUpdate = 'Wait...'
+            const id = route.params.id
+            const { $db } = useNuxtApp()
+            const docRef = doc($db, 'pages', id)
+            await updateDoc(docRef, state.pageData)
+            state.btnUpdate = 'Save changes'
+            swal({
+                icon: 'success',
+                title: false,
+                button: false,
+                timer: 1000,
+            })
+        }
     } catch (error) {
         console.log(error)
     }
@@ -308,7 +340,7 @@ async function pageDelete() {
             icon: 'warning',
             title: 'Are you sure?',
             buttons: ['No', 'Yes'],
-            dangerMode: true
+            dangerMode: true,
         })
         if (alert) {
             const id = route.params.id
@@ -343,7 +375,6 @@ onUpdated(() => {
 </script>
 
 <style scoped>
-
 :root {
     --primary: #000814;
     --secondary: #001d3d;
@@ -410,6 +441,10 @@ onUpdated(() => {
     width: 100%;
     font-weight: bold;
     margin-top: 10px;
+}
+
+.wrapper .row .setting .card .profil img{
+    object-fit: cover;
 }
 
 .wrapper .row .setting .card .profil input {
@@ -667,6 +702,11 @@ onUpdated(() => {
     margin: 0 auto;
     margin-top: 50px;
     overflow: hidden;
+}
+
+.wrapper .preview .display .head .profil img{
+    width: 60px;
+    height: 60px;
 }
 
 .wrapper .preview .display .head .name {
