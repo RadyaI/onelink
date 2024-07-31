@@ -6,7 +6,7 @@
                 <button @click="backHome()"><i class="bi bi-arrow-left"></i></button>
             </div>
             <div class="row">
-                <div class="setting" >
+                <div class="setting">
                     <div class="card">
                         <div class="profil">
                             <h3>Profil Image:</h3>
@@ -30,31 +30,36 @@
                                     <span class="slider"></span>
                                 </label>
                             </div>
-                            <div class="medsos-link"><i class="bi bi-youtube"></i><input type="text" v-model="state.pageData.youtube">
+                            <div class="medsos-link"><i class="bi bi-youtube"></i><input type="text"
+                                    v-model="state.pageData.youtube">
                                 <label class="switch">
                                     <input type="checkbox" v-model="state.pageData.youtubeStatus">
                                     <span class="slider"></span>
                                 </label>
                             </div>
-                            <div class="medsos-link"><i class="bi bi-tiktok"></i><input type="text" v-model="state.pageData.tiktok">
+                            <div class="medsos-link"><i class="bi bi-tiktok"></i><input type="text"
+                                    v-model="state.pageData.tiktok">
                                 <label class="switch">
                                     <input type="checkbox" v-model="state.pageData.tiktokStatus">
                                     <span class="slider"></span>
                                 </label>
                             </div>
-                            <div class="medsos-link"><i class="bi bi-github"></i><input type="text" v-model="state.pageData.github">
+                            <div class="medsos-link"><i class="bi bi-github"></i><input type="text"
+                                    v-model="state.pageData.github">
                                 <label class="switch">
                                     <input type="checkbox" v-model="state.pageData.githubStatus">
                                     <span class="slider"></span>
                                 </label>
                             </div>
-                            <div class="medsos-link"><i class="bi bi-whatsapp"></i><input type="text" v-model="state.pageData.wa">
+                            <div class="medsos-link"><i class="bi bi-whatsapp"></i><input type="text"
+                                    v-model="state.pageData.wa">
                                 <label class="switch">
                                     <input type="checkbox" v-model="state.pageData.waStatus">
                                     <span class="slider"></span>
                                 </label>
                             </div>
-                            <div class="medsos-link"><i class="bi bi-facebook"></i><input type="text" v-model="state.pageData.facebook">
+                            <div class="medsos-link"><i class="bi bi-facebook"></i><input type="text"
+                                    v-model="state.pageData.facebook">
                                 <label class="switch">
                                     <input type="checkbox" v-model="state.pageData.facebookStatus">
                                     <span class="slider"></span>
@@ -62,14 +67,98 @@
                             </div>
                         </div>
                         <div class="random-link">
-                            <div class="random-link-list"></div>
-                            <div class="random-link-list"></div>
-                            <div class="random-link-list"></div>
-                            <div class="random-link-list"></div>
-                            <div class="random-link-list"></div>
+                            <h3>Your Link:</h3>
+
+                            <div class="random-link-list">
+                                <div class="header">
+                                    <h3>Card 1</h3>
+                                    <label class="switch">
+                                        <input type="checkbox" v-model="state.pageData.card1status">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="input">
+                                    <h4>Card Name:</h4>
+                                    <input type="text" v-model="state.pageData.card1">
+
+                                    <h4>Link:</h4>
+                                    <input type="text" v-model="state.pageData.card1link">
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="random-link-list">
+                                <div class="header">
+                                    <h3>Card 2</h3>
+                                    <label class="switch">
+                                        <input type="checkbox" v-model="state.pageData.card2status">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="input">
+                                    <h4>Card Name:</h4>
+                                    <input type="text" v-model="state.pageData.card2">
+
+                                    <h4>Link:</h4>
+                                    <input type="text" v-model="state.pageData.card2link">
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="random-link-list">
+                                <div class="header">
+                                    <h3>Card 3</h3>
+                                    <label class="switch">
+                                        <input type="checkbox" v-model="state.pageData.card3status">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="input">
+                                    <h4>Card Name:</h4>
+                                    <input type="text" v-model="state.pageData.card3">
+
+                                    <h4>Link:</h4>
+                                    <input type="text" v-model="state.pageData.card3link">
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="random-link-list">
+                                <div class="header">
+                                    <h3>Card 4</h3>
+                                    <label class="switch">
+                                        <input type="checkbox" v-model="state.pageData.card4status">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="input">
+                                    <h4>Card Name:</h4>
+                                    <input type="text" v-model="state.pageData.card4">
+
+                                    <h4>Link:</h4>
+                                    <input type="text" v-model="state.pageData.card4link">
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="random-link-list">
+                                <div class="header">
+                                    <h3>Card 5</h3>
+                                    <label class="switch">
+                                        <input type="checkbox" v-model="state.pageData.card5status">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="input">
+                                    <h4>Card Name:</h4>
+                                    <input type="text" v-model="state.pageData.card5">
+
+                                    <h4>Link:</h4>
+                                    <input type="text" v-model="state.pageData.card5link">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <button>Save Changes</button>
+                    <div class="btn-group">
+                        <button @click="pageDelete()">Delete Page</button>
+                        <button>Save Changes</button>
+                    </div>
                 </div>
                 <div class="preview">
                     <div class="display"></div>
@@ -85,8 +174,10 @@ import { useRoute, useRouter } from 'vue-router';
 import { useNuxtApp } from 'nuxt/app';
 
 import { doc, getDoc } from 'firebase/firestore';
+import swal from 'sweetalert';
 
 import loadingToPage from '../../../components/loadingToPage.vue'
+import { deletePage } from '../../../service/pageService'
 
 const router = useRouter()
 const route = useRoute()
@@ -120,9 +211,39 @@ async function getPageData() {
         const get = await getDoc(doc($db, 'pages', id))
         const data = get.data()
         state.pageData = data
-        console.log(state.pageData)
     } catch (error) {
         throw new Error(error)
+    }
+}
+
+async function pageDelete() {
+    try {
+        const alert = await swal({
+            icon: 'warning',
+            title: 'Are you sure?',
+            buttons: ['No', 'Yes'],
+            dangerMode: true
+        })
+        if (alert) {
+            const id = route.params.id
+            const result = await deletePage(id)
+            if (result) {
+                swal({
+                    icon: 'success',
+                    title: false,
+                    button: false,
+                    timer: 1000
+                }).then(
+                    (back) => {
+                        if (back) {
+                            location.href = '/page'
+                        }
+                    }
+                )
+            }
+        }
+    } catch (error) {
+        console.log(error)
     }
 }
 
@@ -279,6 +400,7 @@ onBeforeMount(() => {
     --color-green: #4296f4;
     margin-top: 5px;
     padding: 0 3px;
+    cursor: pointer;
 }
 
 .slider {
@@ -327,11 +449,60 @@ onBeforeMount(() => {
 }
 
 
-.wrapper .row .setting .card .random-link {}
-
-.wrapper .row .setting button {
+.wrapper .row .setting .card .random-link {
     margin-top: 10px;
-    margin-left: 450px;
+}
+
+.wrapper .row .setting .card .random-link h3 {
+    margin-top: 15px;
+}
+
+.wrapper .row .setting .card .random-link .random-link-list {
+    width: 80%;
+    padding: 5px 5px;
+    height: auto;
+    /* border-radius: 5px; */
+    margin-top: 10px;
+    border-top: 1px solid grey;
+}
+
+.wrapper .row .setting .card .random-link .random-link-list .header {
+    width: 100%;
+    height: auto;
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    border: none;
+}
+
+.wrapper .row .setting .card .random-link .random-link-list .input {
+    width: 100%;
+    height: auto;
+}
+
+.wrapper .row .setting .card .random-link .random-link-list .input h4 {
+    margin-top: 10px;
+}
+
+.wrapper .row .setting .card .random-link .random-link-list .input input {
+    height: 35px;
+    width: 84%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 0 5px;
+    margin-top: 10px
+}
+
+.wrapper .row .setting .btn-group {
+    width: fit-content;
+    margin-left: 80px;
+}
+
+.wrapper .row .setting .btn-group button {
+    margin-left: 25px;
+    margin-top: 10px;
     padding: 13px 25px;
     font-size: 15px;
     cursor: pointer;
@@ -352,7 +523,7 @@ onBeforeMount(() => {
     border: 1px solid black;
     background-color: white;
     border-radius: 10px;
-    width: 65%;
+    width: 75%;
     height: 90%;
     margin: 0 auto;
     margin-top: 20px;

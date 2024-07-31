@@ -174,6 +174,7 @@ async function createPage() {
 
 onMounted(() => {
     state.profil = JSON.parse(localStorage.getItem('loginData')).photoURL
+    console.log(state.profil)
     state.uid = JSON.parse(localStorage.getItem('loginData')).uid
     const auth = Cookies.get('isLoggedIn')
     if (!auth) {
