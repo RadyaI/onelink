@@ -425,7 +425,7 @@ onUpdated(() => {
     width: 90%;
     height: 85%;
     padding: 0 20px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .wrapper .row .setting .card::-webkit-scrollbar {
