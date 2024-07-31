@@ -287,10 +287,10 @@ async function handleFile(event) {
         state.file = event.target.files[0]
         const { $storage } = useNuxtApp()
         const storageRef = ref($storage, `profil/${state.file.name}`)
-        state.btnUpdate = 'Uploading photo'
+        state.btnUpdate = 'Uploading photo...'
         const upload = await uploadBytes(storageRef, state.file)
-        state.btnUpdate = 'Save changes'
         state.pageData.profil = await getDownloadURL(upload.ref)
+        state.btnUpdate = 'Save changes'
     } catch (error) {
         console.log(error)
     }
